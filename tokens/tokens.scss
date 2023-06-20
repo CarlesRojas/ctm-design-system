@@ -1,0 +1,125 @@
+// Colors
+$color-black-600: #4a6572;
+$color-black-700: #344955;
+$color-black-800: #232f34;
+
+$color-grey-50: #f8fafb;
+$color-grey-100: #f1f6f8;
+$color-grey-200: #e3edf1;
+$color-grey-300: #cad8de;
+$color-grey-400: #839ba6;
+
+$color-primary-300: #caf1ff;
+$color-primary-400: #85e4ff;
+$color-primary-500: #39d5ff;
+$color-primary-600: #2daacc;
+$color-primary-800: #1c6a80;
+
+$color-secondary-800: #0b334c;
+
+$color-accent-1-800: #f3d802;
+
+$color-accent-2-400: #f18141;
+$color-accent-2-500: #ee6212;
+$color-accent-2-600: #be4e0e;
+
+$color-positive-300: #53f990;
+$color-positive-400: #3fe27b;
+$color-positive-600: #22c55e;
+$color-positive-700: #1aac50;
+
+$color-neutral-300: #f8be5a;
+$color-neutral-400: #e2a845;
+$color-neutral-600: #f59e0b;
+$color-neutral-700: #de9009;
+
+$color-destructive-300: #fa5b62;
+$color-destructive-400: #dc3f47;
+$color-destructive-600: #b91c1c;
+$color-destructive-700: #941616;
+
+$color-background: #f1f4f4;
+$color-white: #ffffff;
+
+$color-semantic-success: #0bb176;
+$color-semantic-error: #b91c1c;
+$color-semantic-warning: #ffac0b;
+$color-semantic-info: #777777;
+
+$color-semantic-success-low: #daefe7;
+$color-semantic-error-low: #f6d7d7;
+$color-semantic-warning-low: #fbf3e1;
+$color-semantic-info-low: #eaeaea;
+
+// Border radius
+$radius-xxs: 0.125rem;
+$radius-xs: 0.25rem;
+$radius-s: 0.5rem;
+$radius-m: 1rem;
+$radius-circle: 100vw;
+
+// Spacing
+$spacing-xxxs: 0.125rem;
+$spacing-xxs: 0.25rem;
+$spacing-xs: 0.5rem;
+$spacing-s: 0.75rem;
+$spacing-m: 1rem;
+$spacing-l: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-xxl: 3.5rem;
+$spacing-xxxl: 5.5rem;
+$spacing-xxxxl: 9rem;
+
+// Size
+$size-xxs: 0.25rem;
+$size-xs: 0.5rem;
+$size-s: 0.75rem;
+$size-m: 1rem;
+$size-l: 1.5rem;
+$size-xl: 2rem;
+$size-xxl: 3rem;
+$size-xxxl: 4rem;
+
+// Shadows
+$shadow-raised: 0 1px 2px rgba(52, 73, 85, 0.16);
+$shadow-overlay: 0 2px 8px rgba(52, 73, 85, 0.16);
+$shadow-upsideDownOverlay: 0 -2px 8px rgba(52, 73, 85, 0.16);
+$shadow-stickyNav: 0 6px 12px rgba(52, 73, 85, 0.1);
+$shadow-tempNav: 0 8px 16px rgba(52, 73, 85, 0.1);
+$shadow-popOut: 0 8px 24px rgba(52, 73, 85, 0.16);
+$shadow-input: 0 0 0 4px rgba(186, 213, 222, 0.5);
+
+// Font
+$fontFamily: "Montserrat";
+
+// Measurements
+$headerHeight: 64px;
+
+// Media Breakpoints
+$media-sm: 768px;
+$media-md: 1023px;
+$media-lg: 1440px;
+
+@mixin for-tablet {
+  @media (min-width: $media-sm) {
+    @content;
+  }
+}
+
+@mixin for-desktop {
+  @media (min-width: $media-md) {
+    @content;
+  }
+}
+
+@mixin for-big-desktop {
+  @media (min-width: $media-lg) {
+    @content;
+  }
+}
+
+@mixin for-mouse {
+  @media (hover: hover) {
+    @content;
+  }
+}

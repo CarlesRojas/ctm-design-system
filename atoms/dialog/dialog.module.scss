@@ -1,0 +1,31 @@
+@import "@design/tokens/tokens.scss";
+
+.dialog {
+  z-index: 10;
+  margin: auto;
+  padding: $spacing-xl;
+  background-color: $color-white;
+  border: 1px solid $color-grey-300;
+  box-shadow: $shadow-popOut;
+  width: 30rem;
+  max-width: 90%;
+
+  &[open] {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-s;
+  }
+
+  &::backdrop {
+    opacity: 0.9;
+    background-color: $color-black-800;
+    cursor: pointer;
+  }
+
+  .closeButton {
+    position: absolute;
+    right: $spacing-s;
+    top: $spacing-s;
+    padding: $spacing-s;
+  }
+}
