@@ -1,6 +1,6 @@
-import { DetailedHTMLProps, HTMLAttributes } from "react";
-import { RiLoader4Fill } from "react-icons/ri";
-import s from "./loading.module.scss";
+import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
+import { RiLoader4Fill } from 'react-icons/ri';
+import s from './loading.module.scss';
 
 export type LoadingProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 

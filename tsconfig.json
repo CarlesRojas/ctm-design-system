@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "outDir": "dist",
+    "jsx": "react",
+    "declaration": true,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "sourceMap": false,
+    "module": "ESNext",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "baseUrl": "src"
+  },
+  "exclude": ["node_modules/"],
+  "include": ["src/*", "globals.d.ts"]
+}
