@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes, DetailedHTMLProps, Ref } from 'react';
 import { ButtonText } from '../../tokens/typography';
-import Loading from '../atoms/loading';
+import Loading from '../loading';
 import s from './button.module.scss';
 
 export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {

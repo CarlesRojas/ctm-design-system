@@ -1,4 +1,3 @@
-import NextLink from 'next/link';
 import React from 'react';
 import s from './link.module.scss';
 
@@ -12,14 +11,14 @@ export interface LinkProps {
 
 const Link = ({ id, href, children, fullWidth, className, ...rest }: LinkProps) => {
   return (
-    <NextLink
+    <a
       href={href}
       data-testid={`link_${id}`}
       {...rest}
       className={`${s.link} ${className}  ${fullWidth ? s.fullWidth : ''}`}
     >
       {children}
-    </NextLink>
+    </a>
   );
 };
 
