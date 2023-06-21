@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "deploy": "np",
+    "deploy": "rollup -c && np",
     "test": "echo \"No tests yet...\" && exit 0"
   },
   "repository": {
