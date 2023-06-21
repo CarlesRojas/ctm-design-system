@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { AnchorHTMLAttributes, DetailedHTMLProps } from 'react';
 import s from './link.module.scss';
 
-export interface LinkProps {
+export interface LinkProps extends DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
   id: string;
   children: React.ReactNode;
   href: string;
