@@ -3,11 +3,12 @@
   "version": "1.0.1",
   "description": "Design system for web development",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c && tsc --declaration --allowJs --emitDeclarationOnly dist/index.js",
     "deploy": "np",
     "test": "echo \"No tests yet...\" && exit 0"
   },
