@@ -1,5 +1,6 @@
-import NextLink from "next/link";
-import s from "./link.module.scss";
+import NextLink from 'next/link';
+import React from 'react';
+import s from './link.module.scss';
 
 export interface LinkProps {
   id: string;
@@ -15,7 +16,7 @@ const Link = ({ id, href, children, fullWidth, className, ...rest }: LinkProps) 
       href={href}
       data-testid={`link_${id}`}
       {...rest}
-      className={`${s.link} ${className}  ${fullWidth ? s.fullWidth : ""}`}
+      className={`${s.link} ${className}  ${fullWidth ? s.fullWidth : ''}`}
     >
       {children}
     </NextLink>

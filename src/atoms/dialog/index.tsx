@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, DialogHTMLAttributes, ReactNode, useCallback, useEffect, useRef } from 'react';
+import React, { DetailedHTMLProps, DialogHTMLAttributes, ReactNode, useCallback, useEffect, useRef } from 'react';
 import { RiCloseLine } from 'react-icons/ri';
 import { H3 } from '../../tokens/typography';
 import Button, { ButtonType } from '../button';

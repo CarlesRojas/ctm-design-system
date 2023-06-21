@@ -1,7 +1,7 @@
-import { DetailedHTMLProps, InputHTMLAttributes } from "react";
-import { UseFormRegisterReturn } from "react-hook-form";
-import ErrorMessage from "../errorMessage";
-import s from "./checkbox.module.scss";
+import React, { DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
+import ErrorMessage from '../errorMessage';
+import s from './checkbox.module.scss';
 
 export interface CheckboxProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   id: string;
@@ -14,13 +14,13 @@ export interface CheckboxProps extends DetailedHTMLProps<InputHTMLAttributes<HTM
 
 const Checkbox = ({ id, children, errorMessage, register, isDisabled, darkMode, ...rest }: CheckboxProps) => {
   return (
-    <div className={`${s.checkbox} ${isDisabled ? s.disabled : ""} ${darkMode ? s.darkMode : ""}`}>
+    <div className={`${s.checkbox} ${isDisabled ? s.disabled : ''} ${darkMode ? s.darkMode : ''}`}>
       <div className={s.content}>
         <label htmlFor={id}>
           <input
             id={id}
             type="checkbox"
-            className={`${errorMessage ? s.error : ""}`}
+            className={`${errorMessage ? s.error : ''}`}
             data-testid={`checkbox_${id}`}
             disabled={isDisabled}
             {...rest}
@@ -33,7 +33,7 @@ const Checkbox = ({ id, children, errorMessage, register, isDisabled, darkMode, 
         {children}
       </div>
 
-      <ErrorMessage id={id} message={errorMessage || "-"} darkMode={darkMode} hidden={!errorMessage} />
+      <ErrorMessage id={id} message={errorMessage || '-'} darkMode={darkMode} hidden={!errorMessage} />
     </div>
   );
 };

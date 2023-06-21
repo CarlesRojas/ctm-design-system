@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps, Ref } from 'react';
+import React, { ButtonHTMLAttributes, DetailedHTMLProps, Ref } from 'react';
 import { ButtonText } from '../../tokens/typography';
 import Loading from '../atoms/loading';
 import s from './button.module.scss';

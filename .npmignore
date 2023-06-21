@@ -9,3 +9,5 @@ package-lock.json
 tsconfig.json
 README.md
 globals.d.ts
+jest.config.js
+jest.setup.js

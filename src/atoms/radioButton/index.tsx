@@ -1,3 +1,4 @@
+import React from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 import { RiCheckboxBlankCircleLine, RiCheckboxCircleLine } from 'react-icons/ri';
 import { Body } from '../../tokens/typography';

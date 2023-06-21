@@ -1,32 +1,33 @@
-import { render, RenderResult, screen } from "@testing-library/react";
-import CheckButton, { CheckButtonProps } from ".";
+import { render, RenderResult, screen } from '@testing-library/react';
+import React from 'react';
+import CheckButton, { CheckButtonProps } from '.';
 
 const renderWithProps = (props: CheckButtonProps): RenderResult => {
   return render(<CheckButton {...props} />);
 };
 
 const defaultProps: CheckButtonProps = {
-  value: "mockValue",
-  label: "mockLabel",
+  value: 'mockValue',
+  label: 'mockLabel'
 };
 
-describe("GIVEN the CheckButton component", () => {
-  it("THEN it shows the CheckButton", () => {
+describe('GIVEN the CheckButton component', () => {
+  it('THEN it shows the CheckButton', () => {
     renderWithProps(defaultProps);
 
-    expect(screen.getByTestId("checkButton_mockValue")).toBeInTheDocument();
+    expect(screen.getByTestId('checkButton_mockValue')).toBeInTheDocument();
   });
 
-  describe("WHEN the isDisabled prop is true", () => {
+  describe('WHEN the isDisabled prop is true', () => {
     const disabledProps: CheckButtonProps = {
       ...defaultProps,
-      isDisabled: true,
+      isDisabled: true
     };
 
-    it("THEN it disables the input", () => {
+    it('THEN it disables the input', () => {
       renderWithProps(disabledProps);
 
-      expect(screen.getByTestId("checkButton_mockValue")).toBeDisabled();
+      expect(screen.getByTestId('checkButton_mockValue')).toBeDisabled();
     });
   });
 });

@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, SelectHTMLAttributes } from 'react';
+import React, { DetailedHTMLProps, SelectHTMLAttributes } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 import { Label } from '../../tokens/typography';
 import ErrorMessage from '../errorMessage';
