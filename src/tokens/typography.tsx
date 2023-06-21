@@ -2,31 +2,31 @@ import React, { AnchorHTMLAttributes, DetailedHTMLProps, HTMLAttributes, LabelHT
 import s from './typography.module.scss';
 
 interface HeadingProps extends DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement> {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
   darkMode?: boolean;
 }
 
 interface ParagraphProps extends DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement> {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
   darkMode?: boolean;
 }
 
 interface AnchorProps extends DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
   darkMode?: boolean;
 }
 
 interface SmallProps extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
   darkMode?: boolean;
 }
 
 interface LabelProps extends DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement> {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
   darkMode?: boolean;
 }

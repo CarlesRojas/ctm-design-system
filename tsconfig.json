@@ -4,6 +4,8 @@
     "outDir": "dist",
     "jsx": "react",
     "declaration": true,
+    "declarationDir": "dist/dts",
+    // "emitDeclarationOnly": true,
     "noImplicitAny": false,
     "removeComments": true,
     "sourceMap": false,
