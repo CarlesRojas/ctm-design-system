@@ -1,0 +1,11 @@
+
+/node_modules
+/src
+
+.gitignore
+.npmignore
+rollup.config.js
+package-lock.json
+tsconfig.json
+README.md
+globals.d.ts
