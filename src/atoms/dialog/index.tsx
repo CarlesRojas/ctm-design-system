@@ -1,8 +1,8 @@
-import { H3 } from "@design/tokens/typography";
-import { DetailedHTMLProps, DialogHTMLAttributes, ReactNode, useCallback, useEffect, useRef } from "react";
-import { RiCloseLine } from "react-icons/ri";
-import Button, { ButtonType } from "../button";
-import s from "./dialog.module.scss";
+import { DetailedHTMLProps, DialogHTMLAttributes, ReactNode, useCallback, useEffect, useRef } from 'react';
+import { RiCloseLine } from 'react-icons/ri';
+import { H3 } from '../../tokens/typography';
+import Button, { ButtonType } from '../button';
+import s from './dialog.module.scss';
 
 export interface DialogProps extends DetailedHTMLProps<DialogHTMLAttributes<HTMLDialogElement>, HTMLDialogElement> {
   id: string;
@@ -43,7 +43,7 @@ const Dialog = ({ id, children, title, darkMode, open, onClose, ...rest }: Dialo
   return (
     <dialog
       onClick={onDialogClick}
-      className={`${s.dialog} ${darkMode ? s.darkMode : ""}`}
+      className={`${s.dialog} ${darkMode ? s.darkMode : ''}`}
       ref={dialogRef}
       onClose={closeDialog}
       data-testid={`dialog_${id}`}

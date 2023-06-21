@@ -1,8 +1,8 @@
-import { Label } from "@design/tokens/typography";
-import { DetailedHTMLProps, SelectHTMLAttributes } from "react";
-import { UseFormRegisterReturn } from "react-hook-form";
-import ErrorMessage from "../errorMessage";
-import s from "./dropdown.module.scss";
+import { DetailedHTMLProps, SelectHTMLAttributes } from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
+import { Label } from '../../tokens/typography';
+import ErrorMessage from '../errorMessage';
+import s from './dropdown.module.scss';
 
 export interface DropdownProps extends DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement> {
   id: string;
@@ -23,7 +23,7 @@ export interface DropdownOption {
   disabled?: boolean;
 }
 
-export const DROPDOWN_SELECT_DEFAULT_VALUE = "SELECT";
+export const DROPDOWN_SELECT_DEFAULT_VALUE = 'SELECT';
 
 const Dropdown = ({
   id,
@@ -40,8 +40,8 @@ const Dropdown = ({
 }: DropdownProps) => {
   return (
     <div
-      className={`${s.dropdown} ${isDisabled ? s.disabled : ""} ${darkMode ? s.darkMode : ""} ${
-        overWhite ? s.overWhite : ""
+      className={`${s.dropdown} ${isDisabled ? s.disabled : ''} ${darkMode ? s.darkMode : ''} ${
+        overWhite ? s.overWhite : ''
       }`}
     >
       {label && (
@@ -52,7 +52,7 @@ const Dropdown = ({
 
       <select
         id={id}
-        className={`${errorMessage ? s.error : ""} ${success ? s.success : ""}`}
+        className={`${errorMessage ? s.error : ''} ${success ? s.success : ''}`}
         data-testid={`dropdown_${id}`}
         defaultValue={defaultValue ?? DROPDOWN_SELECT_DEFAULT_VALUE}
         disabled={isDisabled}

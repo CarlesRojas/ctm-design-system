@@ -1,5 +1,6 @@
-import { Caption } from "@design/tokens/typography";
-import s from "./errorMessage.module.scss";
+import React from 'react';
+import { Caption } from '../../tokens/typography';
+import s from './errorMessage.module.scss';
 
 export interface ErrorMessageProps {
   id: string;
@@ -12,7 +13,7 @@ export interface ErrorMessageProps {
 const ErrorMessage = ({ id, message, darkMode, hidden, className }: ErrorMessageProps) => {
   return (
     <Caption
-      className={`${s.errorMessage} ${darkMode ? s.darkMode : ""} ${hidden ? s.hidden : ""} ${className}`}
+      className={`${s.errorMessage} ${darkMode ? s.darkMode : ''} ${hidden ? s.hidden : ''} ${className}`}
       data-testid={`error_${id}`}
     >
       {message}

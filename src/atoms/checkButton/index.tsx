@@ -1,7 +1,7 @@
-import { Body } from "@design/tokens/typography";
-import { UseFormRegisterReturn } from "react-hook-form";
-import { RiCheckboxBlankLine, RiCheckboxLine } from "react-icons/ri";
-import s from "./checkButton.module.scss";
+import { UseFormRegisterReturn } from 'react-hook-form';
+import { RiCheckboxBlankLine, RiCheckboxLine } from 'react-icons/ri';
+import { Body } from '../../tokens/typography';
+import s from './checkButton.module.scss';
 
 export interface CheckButtonProps {
   value: string;
@@ -14,7 +14,7 @@ export interface CheckButtonProps {
 const CheckButton = ({ value, label, showIcon, register, isDisabled }: CheckButtonProps) => {
   return (
     <div className={s.checkButton}>
-      <label htmlFor={value} className={isDisabled ? s.disabled : ""}>
+      <label htmlFor={value} className={isDisabled ? s.disabled : ''}>
         <input
           id={value}
           value={value}

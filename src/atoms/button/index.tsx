@@ -1,7 +1,7 @@
-import Loading from "@design/atoms/loading";
-import { ButtonText } from "@design/tokens/typography";
-import { ButtonHTMLAttributes, DetailedHTMLProps, Ref } from "react";
-import s from "./button.module.scss";
+import { ButtonHTMLAttributes, DetailedHTMLProps, Ref } from 'react';
+import { ButtonText } from '../../tokens/typography';
+import Loading from '../atoms/loading';
+import s from './button.module.scss';
 
 export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   id: string;
@@ -17,13 +17,13 @@ export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTML
 }
 
 export enum ButtonType {
-  PRIMARY = "primary",
-  SECONDARY = "secondary",
-  MINIMAL = "minimal",
+  PRIMARY = 'primary',
+  SECONDARY = 'secondary',
+  MINIMAL = 'minimal',
 
-  POSITIVE = "positive",
-  NEUTRAL = "neutral",
-  DESTRUCTIVE = "destructive",
+  POSITIVE = 'positive',
+  NEUTRAL = 'neutral',
+  DESTRUCTIVE = 'destructive'
 }
 
 const Button = ({
@@ -48,9 +48,9 @@ const Button = ({
       data-testid={`button_${id}`}
       disabled={isDisabled || isLoading}
       {...rest}
-      className={`${typeClass} ${s.button} ${fullWidth ? s.fullWidth : ""} ${darkMode ? s.darkMode : ""} ${
-        isLoading ? s.loading : ""
-      } ${isDisabled ? s.disabled : ""} ${className}`}
+      className={`${typeClass} ${s.button} ${fullWidth ? s.fullWidth : ''} ${darkMode ? s.darkMode : ''} ${
+        isLoading ? s.loading : ''
+      } ${isDisabled ? s.disabled : ''} ${className}`}
       ref={innerRef}
     >
       {isLoading && <Loading className={s.loadingIcon} />}

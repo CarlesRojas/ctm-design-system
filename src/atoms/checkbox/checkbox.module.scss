@@ -1,4 +1,4 @@
-@import "@design/tokens/tokens.scss";
+@import '../../tokens/tokens.scss';
 
 .checkbox {
   position: relative;
@@ -70,7 +70,7 @@
         &:checked {
           + .checkmark {
             background-color: $color-primary-800;
-            background-image: url("../../icons/Check.svg");
+            background-image: url('../../icons/Check.svg');
             background-repeat: no-repeat;
             background-position: center;
             background-size: $spacing-l;

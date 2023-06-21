@@ -1,8 +1,8 @@
-import { Label } from "@design/tokens/typography";
-import { DetailedHTMLProps, InputHTMLAttributes } from "react";
-import { UseFormRegisterReturn } from "react-hook-form";
-import ErrorMessage from "../errorMessage";
-import s from "./input.module.scss";
+import { DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
+import { Label } from '../../tokens/typography';
+import ErrorMessage from '../errorMessage';
+import s from './input.module.scss';
 
 export interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   id: string;
@@ -28,8 +28,8 @@ const Input = ({
 }: InputProps) => {
   return (
     <div
-      className={`${s.input} ${isDisabled ? s.disabled : ""} ${darkMode ? s.darkMode : ""} ${
-        overWhite ? s.overWhite : ""
+      className={`${s.input} ${isDisabled ? s.disabled : ''} ${darkMode ? s.darkMode : ''} ${
+        overWhite ? s.overWhite : ''
       }`}
     >
       {label && (
@@ -41,7 +41,7 @@ const Input = ({
       <input
         id={id}
         key={id}
-        className={`${errorMessage ? s.error : ""} ${success ? s.success : ""}`}
+        className={`${errorMessage ? s.error : ''} ${success ? s.success : ''}`}
         data-testid={`input_${id}`}
         disabled={isDisabled}
         {...rest}

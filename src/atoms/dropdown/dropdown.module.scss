@@ -1,4 +1,4 @@
-@import "@design/tokens/tokens.scss";
+@import '../../tokens/tokens.scss';
 
 .dropdown {
   width: 100%;
@@ -21,7 +21,7 @@
       background-color: rgba(255, 255, 255, 0.1);
       border: 1px solid transparent;
       color: $color-white;
-      background-image: url("../../icons/ArrowDownWhite.svg");
+      background-image: url('../../icons/ArrowDownWhite.svg');
     }
   }
 
@@ -60,7 +60,7 @@
     border: 1px solid $color-grey-200;
     outline: none;
     appearance: none;
-    background-image: url("../../icons/ArrowDown.svg");
+    background-image: url('../../icons/ArrowDown.svg');
     background-repeat: no-repeat;
     background-position: right $spacing-m center;
     background-size: $size-l;
@@ -74,7 +74,7 @@
 
     &.error {
       border: 1px solid $color-semantic-error !important;
-      background-image: url("../../icons/InputWrong.svg");
+      background-image: url('../../icons/InputWrong.svg');
     }
 
     &:focus,
