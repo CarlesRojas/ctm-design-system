@@ -1,5 +1,6 @@
 import React, { DetailedHTMLProps, SelectHTMLAttributes } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
+import { RiArrowDownSLine, RiErrorWarningFill } from 'react-icons/ri';
 import { Label } from '../../tokens/typography';
 import ErrorMessage from '../errorMessage';
 import s from './dropdown.module.scss';
@@ -50,23 +51,28 @@ const Dropdown = ({
         </Label>
       )}
 
-      <select
-        id={id}
-        className={`${errorMessage ? s.error : ''} ${success ? s.success : ''}`}
-        data-testid={`dropdown_${id}`}
-        defaultValue={defaultValue ?? DROPDOWN_SELECT_DEFAULT_VALUE}
-        disabled={isDisabled}
-        {...rest}
-        {...register}
-      >
-        {!defaultValue && <option disabled value={DROPDOWN_SELECT_DEFAULT_VALUE} />}
+      <div className={s.container}>
+        <select
+          id={id}
+          className={`${errorMessage ? s.error : ''} ${success ? s.success : ''}`}
+          data-testid={`dropdown_${id}`}
+          defaultValue={defaultValue ?? DROPDOWN_SELECT_DEFAULT_VALUE}
+          disabled={isDisabled}
+          {...rest}
+          {...register}
+        >
+          {!defaultValue && <option disabled value={DROPDOWN_SELECT_DEFAULT_VALUE} />}
 
-        {dropdownOptions.map(({ value, label, disabled }) => (
-          <option key={value} value={value} disabled={disabled}>
-            {label}
-          </option>
-        ))}
-      </select>
+          {dropdownOptions.map(({ value, label, disabled }) => (
+            <option key={value} value={value} disabled={disabled}>
+              {label}
+            </option>
+          ))}
+        </select>
+
+        <RiArrowDownSLine className={s.dropdownIcon} />
+        {errorMessage && <RiErrorWarningFill className={s.errorIcon} />}
+      </div>
 
       {errorMessage && <ErrorMessage id={id} message={errorMessage} darkMode={darkMode} />}
     </div>

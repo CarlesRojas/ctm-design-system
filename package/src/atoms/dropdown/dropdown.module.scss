@@ -22,7 +22,13 @@
       background-color: rgba(255, 255, 255, 0.1);
       border: 1px solid transparent;
       color: $color-white;
-      background-image: url('../../icons/ArrowDownWhite.svg');
+    }
+
+    .dropdownIcon {
+      color: $color-white;
+    }
+    .errorIcon {
+      color: $color-destructive-300;
     }
   }
 
@@ -48,6 +54,10 @@
     white-space: nowrap;
   }
 
+  .container {
+    position: relative;
+  }
+
   select {
     width: 100%;
     font-family: $fontFamily, sans-serif;
@@ -61,7 +71,6 @@
     border: 1px solid $color-grey-200;
     outline: none;
     appearance: none;
-    background-image: url('../../icons/ArrowDown.svg');
     background-repeat: no-repeat;
     background-position: right $spacing-m center;
     background-size: $size-l;
@@ -75,7 +84,6 @@
 
     &.error {
       border: 1px solid $color-semantic-error !important;
-      background-image: url('../../icons/InputWrong.svg');
     }
 
     &:focus,
@@ -93,5 +101,22 @@
     option {
       color: black;
     }
+  }
+
+  .errorIcon,
+  .dropdownIcon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 100%;
+    width: $spacing-xxl;
+    padding: $spacing-s;
+    color: $color-black-800;
+  }
+
+  .errorIcon {
+    right: $spacing-xl;
+    color: $color-semantic-error;
   }
 }

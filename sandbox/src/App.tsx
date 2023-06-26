@@ -1,6 +1,5 @@
 import {
   Body,
-  BodyBold,
   Button,
   ButtonType,
   Checkbox,
@@ -28,6 +27,8 @@ interface Inputs {
 }
 
 const Home = () => {
+  const darkMode = false;
+
   const {
     register,
     handleSubmit,
@@ -37,24 +38,26 @@ const Home = () => {
 
   const onSubmit = (data: Inputs) => {
     setError('input', { type: 'manual', message: 'Error message' });
-
+    setError('dropdown', { type: 'manual', message: 'Error message' });
     console.log(data);
   };
 
   const [dilogOpen, setDilogOpen] = useState(false);
-
   const getFormError = (name: keyof Inputs) => errors[name] && errors[name]?.message;
 
   return (
-    <div className={s.app}>
+    <div className={`${s.app} ${darkMode ? s.darkMode : ''}`}>
       <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
-        <Input id={'input'} label={'Input test'} register={register('input')} errorMessage={getFormError('input')} />
+        <Input
+          id={'input'}
+          label={'Input test'}
+          register={register('input')}
+          errorMessage={getFormError('input')}
+          darkMode={darkMode}
+        />
 
-        <Checkbox id={'checkbox'} register={register('checkbox')}>
-          <Body>Checkbox info</Body>
-          <Link id="link" href={'https://example.com'} target="_blank">
-            <BodyBold>Link</BodyBold>
-          </Link>
+        <Checkbox id={'checkbox'} register={register('checkbox')} darkMode={darkMode}>
+          <Body darkMode={darkMode}>Checkbox info</Body>
         </Checkbox>
 
         <div className={s.group}>
@@ -71,15 +74,24 @@ const Home = () => {
 
         <Dropdown
           id={'dropdown'}
+          label="Dropdown test"
           dropdownOptions={[
             { label: 'Option 1', value: '1' },
             { label: 'Option 2', value: '2' }
           ]}
           register={register('dropdown')}
+          errorMessage={getFormError('dropdown')}
+          darkMode={darkMode}
         />
 
-        <Dialog id={'dialog'} open={dilogOpen} title={'Title of Dialog'} onClose={() => setDilogOpen(false)}>
-          <H2>Content of dialog</H2>
+        <Dialog
+          darkMode={darkMode}
+          id={'dialog'}
+          open={dilogOpen}
+          title={'Title of Dialog'}
+          onClose={() => setDilogOpen(false)}
+        >
+          <H2 darkMode={darkMode}>Content of dialog</H2>
         </Dialog>
 
         <div className={s.group}>
@@ -94,12 +106,12 @@ const Home = () => {
           />
         </div>
 
-        <ErrorMessage id={'errorMessage'} message="Error message" />
+        <ErrorMessage darkMode={darkMode} id={'errorMessage'} message="Error message" />
 
-        <SuccessMessage id={'successMessage'} message="Success message" />
+        <SuccessMessage darkMode={darkMode} id={'successMessage'} message="Success message" />
 
         <Link id={'link'} href={'https://example.com'} target="_blank">
-          <Body>Link</Body>
+          <Body darkMode={darkMode}>Link</Body>
         </Link>
 
         <Loading />
