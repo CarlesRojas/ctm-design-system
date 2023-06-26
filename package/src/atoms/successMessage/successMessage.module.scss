@@ -1,0 +1,19 @@
+@import '../../tokens/tokens.scss';
+
+.successMessage {
+  color: $color-semantic-success !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  width: fit-content;
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &.darkMode {
+    color: $color-positive-300 !important;
+  }
+}

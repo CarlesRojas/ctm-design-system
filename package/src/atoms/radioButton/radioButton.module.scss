@@ -1,0 +1,98 @@
+@import '../../tokens/tokens.scss';
+
+.radioButton {
+  width: fit-content;
+
+  label {
+    position: relative;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+
+    &.disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+
+      ~ div {
+        &.notSelected {
+          display: flex;
+        }
+
+        &.selected {
+          display: none;
+        }
+      }
+
+      &:checked {
+        ~ div {
+          &.notSelected {
+            display: none;
+          }
+
+          &.selected {
+            display: flex;
+          }
+        }
+      }
+
+      &:focus-visible {
+        ~ div {
+          box-shadow: $shadow-input;
+        }
+      }
+    }
+
+    @include for-mouse {
+      &:hover {
+        div {
+          background-color: $color-primary-300;
+
+          &.showIcon {
+            background-color: $color-grey-100;
+          }
+        }
+      }
+    }
+
+    div {
+      position: relative;
+      width: fit-content;
+      min-width: $size-xxxl;
+      padding: $spacing-s $spacing-m;
+      border: none;
+      outline: none;
+      border-radius: $radius-circle;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background-color: $color-white;
+      user-select: none;
+      gap: $spacing-xs;
+
+      svg {
+        width: $size-l;
+        min-width: $size-l;
+        max-width: $size-l;
+        height: $size-l;
+        min-height: $size-l;
+        max-height: $size-l;
+        opacity: 0.8;
+      }
+
+      &.selected {
+        background-color: $color-primary-400;
+
+        &.showIcon {
+          background-color: $color-grey-200;
+        }
+      }
+    }
+  }
+}

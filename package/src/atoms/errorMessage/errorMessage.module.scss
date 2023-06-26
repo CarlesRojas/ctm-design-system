@@ -1,0 +1,19 @@
+@import '../../tokens/tokens.scss';
+
+.errorMessage {
+  color: $color-semantic-error !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  width: fit-content;
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &.darkMode {
+    color: $color-destructive-300 !important;
+  }
+}
