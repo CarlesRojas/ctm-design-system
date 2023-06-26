@@ -51,7 +51,8 @@
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.45.0"
+    "react-hook-form": "^7.45.0",
+    "sass": "^1.63.4"
   },
   "devDependencies": {
     "@babel/core": "^7.22.5",

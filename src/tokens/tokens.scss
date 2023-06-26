@@ -90,7 +90,7 @@ $shadow-popOut: 0 8px 24px rgba(52, 73, 85, 0.16);
 $shadow-input: 0 0 0 4px rgba(186, 213, 222, 0.5);
 
 // Font
-$fontFamily: "Montserrat";
+$fontFamily: 'Montserrat';
 
 // Measurements
 $headerHeight: 64px;
@@ -120,6 +120,12 @@ $media-lg: 1440px;
 
 @mixin for-mouse {
   @media (hover: hover) {
+    @content;
+  }
+}
+
+@mixin for-landscape {
+  @media (orientation: landscape) {
     @content;
   }
 }
