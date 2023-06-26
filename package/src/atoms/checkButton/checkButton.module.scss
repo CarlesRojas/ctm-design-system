@@ -51,7 +51,11 @@
     @include for-mouse {
       &:hover {
         div {
-          background-color: $color-grey-100;
+          background-color: $color-primary-300;
+
+          &.showIcon {
+            background-color: $color-grey-50;
+          }
         }
       }
     }
@@ -82,8 +86,11 @@
       }
 
       &.selected {
-        background-color: $color-grey-200;
-        color: black;
+        background-color: $color-primary-400;
+
+        &.showIcon {
+          background-color: $color-grey-100;
+        }
       }
     }
   }

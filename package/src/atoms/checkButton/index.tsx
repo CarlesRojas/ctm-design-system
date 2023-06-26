@@ -25,12 +25,12 @@ const CheckButton = ({ value, label, showIcon, register, isDisabled }: CheckButt
           {...register}
         ></input>
 
-        <div className={s.notSelected}>
+        <div className={`${s.notSelected} ${showIcon ? s.showIcon : ''}`}>
           {showIcon && <RiCheckboxBlankLine />}
           <Body>{label}</Body>
         </div>
 
-        <div className={s.selected}>
+        <div className={`${s.selected} ${showIcon ? s.showIcon : ''}`}>
           {showIcon && <RiCheckboxLine />}
           <Body>{label}</Body>
         </div>

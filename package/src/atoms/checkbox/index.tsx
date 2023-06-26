@@ -1,5 +1,6 @@
 import React, { DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
+import { RiCheckLine } from 'react-icons/ri';
 import ErrorMessage from '../errorMessage';
 import s from './checkbox.module.scss';
 
@@ -27,10 +28,12 @@ const Checkbox = ({ id, children, errorMessage, register, isDisabled, darkMode, 
             {...register}
           />
 
-          <div className={s.checkmark} />
-        </label>
+          <div className={s.checkmark}>
+            <RiCheckLine />
+          </div>
 
-        {children}
+          <div className={s.children}>{children}</div>
+        </label>
       </div>
 
       <ErrorMessage id={id} message={errorMessage || '-'} darkMode={darkMode} hidden={!errorMessage} />

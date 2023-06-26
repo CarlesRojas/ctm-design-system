@@ -1,5 +1,6 @@
 import {
   Body,
+  BodyBold,
   Button,
   ButtonType,
   Checkbox,
@@ -27,27 +28,39 @@ interface Inputs {
 }
 
 const Home = () => {
-  const { register, handleSubmit } = useForm<Inputs>();
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors }
+  } = useForm<Inputs>();
 
   const onSubmit = (data: Inputs) => {
+    setError('input', { type: 'manual', message: 'Error message' });
+
     console.log(data);
   };
 
   const [dilogOpen, setDilogOpen] = useState(false);
 
+  const getFormError = (name: keyof Inputs) => errors[name] && errors[name]?.message;
+
   return (
     <div className={s.app}>
       <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
-        <Input id={'input'} label={'Input test'} register={register('input')} />
+        <Input id={'input'} label={'Input test'} register={register('input')} errorMessage={getFormError('input')} />
 
         <Checkbox id={'checkbox'} register={register('checkbox')}>
           <Body>Checkbox info</Body>
+          <Link id="link" href={'https://example.com'} target="_blank">
+            <BodyBold>Link</BodyBold>
+          </Link>
         </Checkbox>
 
         <div className={s.group}>
-          <CheckButton showIcon register={register('checkButton')} value={'cb1'} label={'checkbutton information'} />
-          <CheckButton showIcon register={register('checkButton')} value={'cb2'} label={'checkbutton information'} />
-          <CheckButton showIcon register={register('checkButton')} value={'cb3'} label={'checkbutton information'} />
+          <CheckButton register={register('checkButton')} value={'cb1'} label={'checkbutton information'} />
+          <CheckButton register={register('checkButton')} value={'cb2'} label={'checkbutton information'} />
+          <CheckButton register={register('checkButton')} value={'cb3'} label={'checkbutton information'} />
         </div>
 
         <div className={s.group}>
