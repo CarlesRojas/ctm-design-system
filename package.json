@@ -1,5 +1,5 @@
 {
-  "name": "pinya-design-system",
+  "name": "ctm-design-system",
   "version": "1.0.10",
   "description": "Design system for web development",
   "main": "./dist/index.js",
@@ -14,21 +14,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CarlesRojas/pinya-design-system.git"
+    "url": "git+https://github.com/CarlesRojas/ctm-design-system.git"
   },
   "type": "module",
   "keywords": [
     "design",
     "system",
-    "pinya",
+    "ctm",
     "react"
   ],
   "author": "Carles Rojas",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CarlesRojas/pinya-design-system/issues"
+    "url": "https://github.com/CarlesRojas/ctm-design-system/issues"
   },
-  "homepage": "https://github.com/CarlesRojas/pinya-design-system#readme",
+  "homepage": "https://github.com/CarlesRojas/ctm-design-system#readme",
   "engines": {
     "node": ">= 10.13"
   },

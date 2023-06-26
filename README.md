@@ -1,1 +1,1 @@
-# Pinya Design System
+# CompramosTuMoto Design System
