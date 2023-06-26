@@ -1,5 +1,6 @@
 import React, { DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
+import { RiErrorWarningFill } from 'react-icons/ri';
 import { Label } from '../../tokens/typography';
 import ErrorMessage from '../errorMessage';
 import s from './input.module.scss';
@@ -38,15 +39,19 @@ const Input = ({
         </Label>
       )}
 
-      <input
-        id={id}
-        key={id}
-        className={`${errorMessage ? s.error : ''} ${success ? s.success : ''}`}
-        data-testid={`input_${id}`}
-        disabled={isDisabled}
-        {...rest}
-        {...register}
-      />
+      <div className={s.container}>
+        <input
+          id={id}
+          key={id}
+          className={`${errorMessage ? s.error : ''} ${success ? s.success : ''}`}
+          data-testid={`input_${id}`}
+          disabled={isDisabled}
+          {...rest}
+          {...register}
+        />
+
+        {errorMessage && <RiErrorWarningFill className={s.errorIcon} />}
+      </div>
 
       {errorMessage && <ErrorMessage id={id} message={errorMessage} darkMode={darkMode} />}
     </div>

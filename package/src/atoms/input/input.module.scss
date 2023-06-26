@@ -2,16 +2,16 @@
 @import '../../tokens/global.scss';
 
 .input {
-  width: 100%;
-  max-width: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
   height: fit-content;
+  width: 100%;
+  max-width: 100%;
 
   &.disabled {
-    opacity: 0.4;
     pointer-events: none;
+    opacity: 0.4;
   }
 
   &.overWhite {
@@ -28,32 +28,46 @@
 
     input {
       background-color: rgba(255, 255, 255, 0.1);
-      border: 1px solid transparent;
       color: $color-white;
+      border: 1px solid transparent;
+    }
+
+    .errorIcon {
+      color: $color-destructive-300;
     }
   }
 
   label {
-    margin-bottom: $spacing-xxs;
     max-width: 100%;
     overflow: hidden;
+    margin-bottom: $spacing-xxs;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
+  .container {
+    position: relative;
+  }
+
   input {
-    width: 100%;
-    font-family: $fontFamily, sans-serif;
-    line-height: 150%;
-    font-weight: 500;
     height: fit-content;
-    font-size: $spacing-m;
-    white-space: pre-line;
-    padding: $spacing-s $spacing-m;
-    border-radius: $radius-circle;
+    width: 100%;
     background-color: $color-white;
     border: 1px solid $color-grey-200;
+    border-radius: $radius-circle;
     outline: none;
+    padding: $spacing-s $spacing-m;
+    font-family: $fontFamily, sans-serif;
+    font-size: $spacing-m;
+    font-weight: 500;
+    line-height: 150%;
+    white-space: pre-line;
+
+    @include for-mouse {
+      &:hover {
+        border: 1px solid $color-primary-600;
+      }
+    }
 
     &::placeholder {
       color: $color-grey-400;
@@ -65,10 +79,6 @@
 
     &.error {
       border: 1px solid $color-semantic-error !important;
-      background-image: url('../../icons/InputWrong.svg');
-      background-repeat: no-repeat;
-      background-position: right $spacing-m center;
-      background-size: $size-l;
     }
 
     &:focus,
@@ -77,21 +87,26 @@
       border: 1px solid $color-primary-600;
     }
 
-    @include for-mouse {
-      &:hover {
-        border: 1px solid $color-primary-600;
-      }
-    }
-
     &[type='number']::-webkit-outer-spin-button,
     &[type='number']::-webkit-inner-spin-button {
+      margin: 0;
       -webkit-appearance: none;
       appearance: none;
-      margin: 0;
     }
     &[type='number'] {
       -moz-appearance: textfield;
       appearance: none;
     }
+  }
+
+  .errorIcon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 100%;
+    width: $spacing-xxl;
+    padding: $spacing-s;
+    color: $color-semantic-error;
   }
 }
