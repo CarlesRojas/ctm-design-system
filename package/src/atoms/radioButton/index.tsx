@@ -10,12 +10,17 @@ export interface RadioButtonProps {
   showIcon?: boolean;
   register?: UseFormRegisterReturn;
   isDisabled?: boolean;
+  darkMode?: boolean;
+  overWhite?: boolean;
 }
 
-const RadioButton = ({ value, label, showIcon, register, isDisabled }: RadioButtonProps) => {
+const RadioButton = ({ value, label, showIcon, register, isDisabled, darkMode, overWhite }: RadioButtonProps) => {
   return (
     <div className={s.radioButton}>
-      <label htmlFor={value} className={isDisabled ? s.disabled : ''}>
+      <label
+        htmlFor={value}
+        className={`${isDisabled ? s.disabled : ''} ${darkMode ? s.darkMode : ''} ${overWhite ? s.overWhite : ''}`}
+      >
         <input
           id={value}
           value={value}
@@ -27,12 +32,12 @@ const RadioButton = ({ value, label, showIcon, register, isDisabled }: RadioButt
 
         <div className={`${s.notSelected} ${showIcon ? s.showIcon : ''}`}>
           {showIcon && <RiCheckboxBlankCircleLine />}
-          <Body>{label}</Body>
+          <Body darkMode={darkMode}>{label}</Body>
         </div>
 
         <div className={`${s.selected} ${showIcon ? s.showIcon : ''}`}>
           {showIcon && <RiCheckboxCircleLine />}
-          <Body>{label}</Body>
+          <Body darkMode={darkMode}>{label}</Body>
         </div>
       </label>
     </div>

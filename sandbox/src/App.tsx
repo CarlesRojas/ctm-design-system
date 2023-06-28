@@ -7,6 +7,8 @@ import {
   Dialog,
   Dropdown,
   ErrorMessage,
+  FileInput,
+  FileType,
   H2,
   Input,
   Link,
@@ -24,21 +26,27 @@ interface Inputs {
   checkButton: string;
   dropdown: string;
   radioButton: string;
+  fileInput: FileList;
 }
 
 const Home = () => {
   const darkMode = false;
+  const whiteBackground = false;
+  const showIcon = true;
 
   const {
     register,
     handleSubmit,
     setError,
+    watch,
+    setValue,
     formState: { errors }
   } = useForm<Inputs>();
 
   const onSubmit = (data: Inputs) => {
     setError('input', { type: 'manual', message: 'Error message' });
     setError('dropdown', { type: 'manual', message: 'Error message' });
+    setError('fileInput', { type: 'manual', message: 'Error message' });
     console.log(data);
   };
 
@@ -46,7 +54,7 @@ const Home = () => {
   const getFormError = (name: keyof Inputs) => errors[name] && errors[name]?.message;
 
   return (
-    <div className={`${s.app} ${darkMode ? s.darkMode : ''}`}>
+    <div className={`${s.app} ${darkMode ? s.darkMode : ''} ${whiteBackground ? s.whiteBackground : ''}`}>
       <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
         <Input
           id={'input'}
@@ -54,6 +62,7 @@ const Home = () => {
           register={register('input')}
           errorMessage={getFormError('input')}
           darkMode={darkMode}
+          overWhite={whiteBackground}
         />
 
         <Checkbox id={'checkbox'} register={register('checkbox')} darkMode={darkMode}>
@@ -61,15 +70,72 @@ const Home = () => {
         </Checkbox>
 
         <div className={s.group}>
-          <CheckButton register={register('checkButton')} value={'cb1'} label={'checkbutton information'} />
-          <CheckButton register={register('checkButton')} value={'cb2'} label={'checkbutton information'} />
-          <CheckButton register={register('checkButton')} value={'cb3'} label={'checkbutton information'} />
+          <CheckButton
+            register={register('checkButton')}
+            value={'cb1'}
+            label={'checkbutton information'}
+            darkMode={darkMode}
+            overWhite={whiteBackground}
+            showIcon={showIcon}
+          />
+          <CheckButton
+            register={register('checkButton')}
+            value={'cb2'}
+            label={'checkbutton information'}
+            darkMode={darkMode}
+            overWhite={whiteBackground}
+            showIcon={showIcon}
+          />
+          <CheckButton
+            register={register('checkButton')}
+            value={'cb3'}
+            label={'checkbutton information'}
+            darkMode={darkMode}
+            overWhite={whiteBackground}
+            showIcon={showIcon}
+          />
         </div>
 
         <div className={s.group}>
-          <RadioButton label="RadioButton 1" register={register('radioButton')} value={'rb1'} />
-          <RadioButton label="RadioButton 2" register={register('radioButton')} value={'rb2'} />
-          <RadioButton label="RadioButton 3" register={register('radioButton')} value={'rb3'} />
+          <RadioButton
+            label="RadioButton 1"
+            register={register('radioButton')}
+            value={'rb1'}
+            darkMode={darkMode}
+            overWhite={whiteBackground}
+            showIcon={showIcon}
+          />
+          <RadioButton
+            label="RadioButton 2"
+            register={register('radioButton')}
+            value={'rb2'}
+            darkMode={darkMode}
+            overWhite={whiteBackground}
+            showIcon={showIcon}
+          />
+          <RadioButton
+            label="RadioButton 3"
+            register={register('radioButton')}
+            value={'rb3'}
+            darkMode={darkMode}
+            overWhite={whiteBackground}
+            showIcon={showIcon}
+          />
+        </div>
+
+        <div className={s.third}>
+          <FileInput
+            id={'fileInput'}
+            fileTypes={[FileType.IMAGE]}
+            label="File Input Test"
+            overWhite={whiteBackground}
+            register={register('fileInput')}
+            watch={watch}
+            setValue={setValue}
+            errorMessage={getFormError('fileInput')}
+            onHelpClick={() => setDilogOpen(true)}
+            darkMode={darkMode}
+          />
         </div>
 
         <Dropdown
@@ -82,6 +148,7 @@ const Home = () => {
           register={register('dropdown')}
           errorMessage={getFormError('dropdown')}
           darkMode={darkMode}
+          overWhite={whiteBackground}
         />
 
         <Dialog

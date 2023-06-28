@@ -1,0 +1,152 @@
+@import '../../tokens/tokens.scss';
+@import '../../tokens/global.scss';
+
+.fileInput {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  height: fit-content;
+  flex-direction: column;
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  &.darkMode {
+    .labelContainer {
+      svg {
+        color: $color-primary-600;
+      }
+    }
+
+    .dropContainer {
+      .border {
+        background-color: rgba(255, 255, 255, 0.1);
+
+        svg {
+          color: $color-primary-600;
+        }
+      }
+    }
+  }
+
+  &.overWhite {
+    .dropContainer {
+      .border {
+        background-color: $color-grey-100;
+      }
+    }
+  }
+
+  .labelContainer {
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $spacing-xxs;
+
+    label {
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    svg {
+      color: $color-primary-800;
+      cursor: pointer;
+      width: $size-l;
+      height: $size-l;
+    }
+  }
+
+  .dropContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    input {
+      width: 100%;
+      min-height: 10rem;
+      aspect-ratio: 16 / 11;
+      opacity: 0;
+
+      &:hover {
+        @include for-mouse {
+          cursor: pointer;
+        }
+      }
+
+      &:focus,
+      &:focus-visible {
+        + .border {
+          box-shadow: $shadow-input;
+          border: 2px dashed $color-primary-800;
+        }
+      }
+    }
+
+    .border {
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: $radius-s;
+      border: 2px dashed rgba(0, 0, 0, 0.2);
+      background-color: $color-white;
+      padding: $spacing-xs;
+      overflow: hidden;
+
+      &.error {
+        border: 2px dashed $color-semantic-error;
+      }
+
+      &.hasImage {
+        display: grid;
+        grid-template-rows: minmax(0, 1fr) min-content;
+        justify-items: center;
+      }
+
+      .image {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        max-height: 100%;
+        max-width: 100%;
+        border-radius: $radius-s;
+
+        img {
+          object-fit: contain;
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      svg {
+        width: $size-xxl;
+        height: $size-xxl;
+        color: $color-primary-800;
+      }
+    }
+
+    &.dragging,
+    &:hover {
+      .border {
+        @include for-mouse {
+          border: 2px dashed $color-primary-800;
+        }
+      }
+    }
+  }
+}

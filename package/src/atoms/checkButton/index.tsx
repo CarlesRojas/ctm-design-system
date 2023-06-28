@@ -10,12 +10,17 @@ export interface CheckButtonProps {
   showIcon?: boolean;
   register?: UseFormRegisterReturn;
   isDisabled?: boolean;
+  darkMode?: boolean;
+  overWhite?: boolean;
 }
 
-const CheckButton = ({ value, label, showIcon, register, isDisabled }: CheckButtonProps) => {
+const CheckButton = ({ value, label, showIcon, register, isDisabled, darkMode, overWhite }: CheckButtonProps) => {
   return (
     <div className={s.checkButton}>
-      <label htmlFor={value} className={isDisabled ? s.disabled : ''}>
+      <label
+        htmlFor={value}
+        className={`${isDisabled ? s.disabled : ''} ${darkMode ? s.darkMode : ''} ${overWhite ? s.overWhite : ''}`}
+      >
         <input
           id={value}
           value={value}
@@ -27,12 +32,12 @@ const CheckButton = ({ value, label, showIcon, register, isDisabled }: CheckButt
 
         <div className={`${s.notSelected} ${showIcon ? s.showIcon : ''}`}>
           {showIcon && <RiCheckboxBlankLine />}
-          <Body>{label}</Body>
+          <Body darkMode={darkMode}>{label}</Body>
         </div>
 
         <div className={`${s.selected} ${showIcon ? s.showIcon : ''}`}>
           {showIcon && <RiCheckboxLine />}
-          <Body>{label}</Body>
+          <Body darkMode={darkMode}>{label}</Body>
         </div>
       </label>
     </div>

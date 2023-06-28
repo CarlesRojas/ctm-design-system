@@ -5,9 +5,14 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  background-color: #f1f6f8;
 
   &.darkMode {
     background-color: black;
+  }
+
+  &.whiteBackground {
+    background-color: white;
   }
 
   .form {
@@ -22,5 +27,9 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+  }
+
+  .third {
+    width: 33%;
   }
 }

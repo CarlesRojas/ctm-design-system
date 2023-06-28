@@ -15,6 +15,68 @@
       pointer-events: none;
     }
 
+    &.darkMode {
+      @include for-mouse {
+        &:hover {
+          div {
+            background-color: $color-primary-800;
+
+            &.showIcon {
+              background-color: rgba(255, 255, 255, 0.1);
+            }
+          }
+        }
+      }
+
+      div {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid transparent;
+
+        &.showIcon {
+          svg {
+            color: $color-white;
+          }
+        }
+
+        &.selected {
+          background-color: $color-primary-700;
+
+          &.showIcon {
+            background-color: rgba(255, 255, 255, 0.1);
+          }
+        }
+      }
+    }
+
+    &.overWhite {
+      @include for-mouse {
+        &:hover {
+          div {
+            &.showIcon {
+              background-color: $color-grey-100;
+            }
+          }
+        }
+      }
+
+      div {
+        background-color: $color-grey-100;
+        border: 1px solid $color-grey-300;
+
+        &.showIcon {
+          svg {
+            color: $color-black-800;
+          }
+        }
+
+        &.selected {
+          &.showIcon {
+            background-color: $color-grey-100;
+          }
+        }
+      }
+    }
+
     input {
       position: absolute;
       opacity: 0;
@@ -48,13 +110,14 @@
         }
       }
     }
+
     @include for-mouse {
       &:hover {
         div {
           background-color: $color-primary-300;
 
           &.showIcon {
-            background-color: $color-grey-50;
+            background-color: $color-white;
           }
         }
       }
@@ -74,6 +137,20 @@
       background-color: $color-white;
       user-select: none;
       gap: $spacing-xs;
+      border: 1px solid $color-grey-200;
+
+      &.showIcon {
+        background-color: transparent;
+        border: 1px solid transparent;
+      }
+
+      &.selected {
+        background-color: $color-primary-400;
+
+        &.showIcon {
+          background-color: $color-white;
+        }
+      }
 
       svg {
         width: $size-l;
@@ -83,14 +160,6 @@
         min-height: $size-l;
         max-height: $size-l;
         opacity: 0.8;
-      }
-
-      &.selected {
-        background-color: $color-primary-400;
-
-        &.showIcon {
-          background-color: $color-grey-100;
-        }
       }
     }
   }
