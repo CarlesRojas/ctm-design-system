@@ -8,34 +8,17 @@ npm install ctm-design-system
 
 ## How to test in sandbox
 
-1. Inside the package folder run:
+1. From the root folder, run:
 
    ```
-   npm i
-   npm run build
-   npm link
+   ./setup.sh
    ```
 
-2. Inside the sandbox folder run:
+   If you get a permission error, run `chmod +x setup.sh` and try again.
 
-   ```
-   npm i
-   npm link ctm-design-system
-   ```
+## To build the library
 
-3. Inside the package folder run:
-
-   ```
-   npm link ../sandbox/node_modules/react from package
-   ```
-
-4. Inside the sandbox folder run:
-
-   ```
-   npm run start
-   ```
-
-5. Each time you make changes in the package, you need to run:
+1. From the package folder, run:
 
    ```
    npm run build

@@ -1,3 +1,5 @@
+@import 'ctm-design-system/dist/tokens.scss';
+
 .app {
   width: 100%;
   min-height: 100%;
@@ -5,7 +7,7 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background-color: #f1f6f8;
+  background-color: $color-background;
 
   &.darkMode {
     background-color: black;

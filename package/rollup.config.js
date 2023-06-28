@@ -1,6 +1,7 @@
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
+import copy from 'rollup-plugin-copy';
 import del from 'rollup-plugin-delete';
 import dts from 'rollup-plugin-dts';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
@@ -33,7 +34,10 @@ const config = [
       }),
       babel({ exclude: 'node_modules/**' }),
       resolve(),
-      commonjs()
+      commonjs(),
+      copy({
+        targets: [{ src: 'src/tokens/tokens.scss', dest: 'dist' }]
+      })
     ],
 
     external: ['react', 'react-dom']
