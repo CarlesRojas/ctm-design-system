@@ -36,7 +36,10 @@ const config = [
       resolve(),
       commonjs(),
       copy({
-        targets: [{ src: 'src/tokens/tokens.scss', dest: 'dist' }]
+        targets: [
+          { src: 'src/tokens/tokens.scss', dest: 'dist' },
+          { src: 'README.md', dest: 'dist' }
+        ]
       })
     ],
 
