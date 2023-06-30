@@ -182,8 +182,6 @@ const Home = () => {
         </Link>
 
         <Loading />
-
-        <p className={s.customParagraph}>Custom paragraph</p>
       </form>
     </div>
   );
