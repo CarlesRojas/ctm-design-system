@@ -16,6 +16,7 @@ export interface DropdownProps extends DetailedHTMLProps<SelectHTMLAttributes<HT
   isDisabled?: boolean;
   darkMode?: boolean;
   overWhite?: boolean;
+  reserveErrorSpace?: boolean;
 }
 
 export interface DropdownOption {
@@ -37,6 +38,7 @@ const Dropdown = ({
   isDisabled,
   darkMode,
   overWhite,
+  reserveErrorSpace,
   ...rest
 }: DropdownProps) => {
   return (
@@ -74,7 +76,9 @@ const Dropdown = ({
         {errorMessage && <RiErrorWarningFill className={s.errorIcon} />}
       </div>
 
-      {errorMessage && <ErrorMessage id={id} message={errorMessage} darkMode={darkMode} />}
+      {(reserveErrorSpace || errorMessage) && (
+        <ErrorMessage id={id} message={errorMessage || '-'} darkMode={darkMode} hidden={!errorMessage} />
+      )}
     </div>
   );
 };

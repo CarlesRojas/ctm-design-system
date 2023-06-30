@@ -11,9 +11,19 @@ export interface CheckboxProps extends DetailedHTMLProps<InputHTMLAttributes<HTM
   register?: UseFormRegisterReturn;
   isDisabled?: boolean;
   darkMode?: boolean;
+  reserveErrorSpace?: boolean;
 }
 
-const Checkbox = ({ id, children, errorMessage, register, isDisabled, darkMode, ...rest }: CheckboxProps) => {
+const Checkbox = ({
+  id,
+  children,
+  errorMessage,
+  register,
+  isDisabled,
+  darkMode,
+  reserveErrorSpace,
+  ...rest
+}: CheckboxProps) => {
   return (
     <div className={`${s.checkbox} ${isDisabled ? s.disabled : ''} ${darkMode ? s.darkMode : ''}`}>
       <div className={s.content}>
@@ -36,7 +46,9 @@ const Checkbox = ({ id, children, errorMessage, register, isDisabled, darkMode, 
         </label>
       </div>
 
-      <ErrorMessage id={id} message={errorMessage || '-'} darkMode={darkMode} hidden={!errorMessage} />
+      {(reserveErrorSpace || errorMessage) && (
+        <ErrorMessage id={id} message={errorMessage || '-'} darkMode={darkMode} hidden={!errorMessage} />
+      )}
     </div>
   );
 };

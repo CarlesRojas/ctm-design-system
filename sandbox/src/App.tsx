@@ -47,6 +47,8 @@ const Home = () => {
     setError('input', { type: 'manual', message: 'Error message' });
     setError('dropdown', { type: 'manual', message: 'Error message' });
     setError('fileInput', { type: 'manual', message: 'Error message' });
+    setError('checkbox', { type: 'manual', message: 'Error message' });
+
     console.log(data);
   };
 
@@ -63,9 +65,16 @@ const Home = () => {
           errorMessage={getFormError('input')}
           darkMode={darkMode}
           overWhite={whiteBackground}
+          reserveErrorSpace
         />
 
-        <Checkbox id={'checkbox'} register={register('checkbox')} darkMode={darkMode}>
+        <Checkbox
+          id={'checkbox'}
+          register={register('checkbox')}
+          darkMode={darkMode}
+          errorMessage={getFormError('checkbox')}
+          reserveErrorSpace
+        >
           <Body darkMode={darkMode}>Checkbox info</Body>
         </Checkbox>
 
@@ -135,6 +144,7 @@ const Home = () => {
             errorMessage={getFormError('fileInput')}
             onHelpClick={() => setDilogOpen(true)}
             darkMode={darkMode}
+            reserveErrorSpace
           />
         </div>
 
@@ -149,6 +159,7 @@ const Home = () => {
           errorMessage={getFormError('dropdown')}
           darkMode={darkMode}
           overWhite={whiteBackground}
+          reserveErrorSpace
         />
 
         <Dialog

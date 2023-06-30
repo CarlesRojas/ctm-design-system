@@ -22,6 +22,7 @@ export interface FileInputProps extends DetailedHTMLProps<InputHTMLAttributes<HT
   setValue?: UseFormSetValue<any>;
   register?: UseFormRegisterReturn;
   watch?: UseFormWatch<any>;
+  reserveErrorSpace?: boolean;
 }
 
 const FileInput = ({
@@ -36,6 +37,7 @@ const FileInput = ({
   register,
   watch,
   setValue,
+  reserveErrorSpace,
   ...rest
 }: FileInputProps) => {
   const [dragActive, setDragActive] = useState(false);
@@ -145,7 +147,9 @@ const FileInput = ({
         </div>
       </div>
 
-      <ErrorMessage id={id} message={errorMessage || '-'} darkMode={darkMode} hidden={!errorMessage} />
+      {(reserveErrorSpace || errorMessage) && (
+        <ErrorMessage id={id} message={errorMessage || '-'} darkMode={darkMode} hidden={!errorMessage} />
+      )}
     </div>
   );
 };

@@ -14,6 +14,7 @@ export interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLIn
   isDisabled?: boolean;
   darkMode?: boolean;
   overWhite?: boolean;
+  reserveErrorSpace?: boolean;
 }
 
 const Input = ({
@@ -25,6 +26,7 @@ const Input = ({
   isDisabled,
   darkMode,
   overWhite,
+  reserveErrorSpace,
   ...rest
 }: InputProps) => {
   return (
@@ -53,7 +55,9 @@ const Input = ({
         {errorMessage && <RiErrorWarningFill className={s.errorIcon} />}
       </div>
 
-      {errorMessage && <ErrorMessage id={id} message={errorMessage} darkMode={darkMode} />}
+      {(reserveErrorSpace || errorMessage) && (
+        <ErrorMessage id={id} message={errorMessage || '-'} darkMode={darkMode} hidden={!errorMessage} />
+      )}
     </div>
   );
 };
