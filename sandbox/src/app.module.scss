@@ -1,4 +1,5 @@
 @import '~ctm-design-system/dist/tokens';
+@import '~ctm-design-system/dist/typography';
 
 .app {
   width: 100%;
@@ -33,5 +34,9 @@
 
   .third {
     width: 33%;
+  }
+
+  .customParagraph {
+    @extend .bodyBold;
   }
 }
