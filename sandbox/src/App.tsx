@@ -8,7 +8,6 @@ import {
   Dropdown,
   ErrorMessage,
   FileInput,
-  FileType,
   H2,
   Input,
   Link,
@@ -132,10 +131,9 @@ const Home = () => {
           />
         </div>
 
-        <div className={s.third}>
+        <div className={s.fileInput}>
           <FileInput
             id={'fileInput'}
-            fileTypes={[FileType.IMAGE]}
             label="File Input Test"
             overWhite={whiteBackground}
             register={register('fileInput')}
@@ -145,6 +143,7 @@ const Home = () => {
             onHelpClick={() => setDilogOpen(true)}
             darkMode={darkMode}
             reserveErrorSpace
+            multiple
           />
         </div>
 

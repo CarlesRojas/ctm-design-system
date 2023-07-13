@@ -23,6 +23,7 @@ export interface FileInputProps extends DetailedHTMLProps<InputHTMLAttributes<HT
   register?: UseFormRegisterReturn;
   watch?: UseFormWatch<any>;
   reserveErrorSpace?: boolean;
+  multiple?: boolean;
 }
 
 const FileInput = ({
@@ -38,11 +39,12 @@ const FileInput = ({
   watch,
   setValue,
   reserveErrorSpace,
+  multiple,
   ...rest
 }: FileInputProps) => {
   const [dragActive, setDragActive] = useState(false);
   const [fileName, setFileName] = useState('');
-  const [image, setImage] = useState('');
+  const [images, setImages] = useState([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const matchType = (type: string) => {
@@ -78,13 +80,16 @@ const FileInput = ({
 
   useEffect(() => {
     const subscription = watch((value) => {
-      // @ts-ignore
-      const currValue = value[id];
-      if (currValue && currValue[0] && currValue[0].name !== fileName) {
-        setFileName(currValue[0].name);
+      const fileList: FileList = value[id];
 
-        if (currValue[0].type.startsWith('image')) setImage(URL.createObjectURL(currValue[0]));
-        else setImage('');
+      if (fileList && fileList.length > 0) {
+        setFileName(fileList.length === 1 ? fileList[0].name : '');
+
+        const images = [];
+        for (let i = 0; i < fileList.length; i++)
+          if (fileList[i].type.startsWith('image')) images.push(URL.createObjectURL(fileList[i]));
+
+        setImages(images);
       }
     });
 
@@ -115,6 +120,7 @@ const FileInput = ({
           value={undefined}
           id={id}
           name={id}
+          multiple={multiple}
           accept={fileTypes
             .map((type) => {
               if (type === FileType.IMAGE) return ['image/png', 'image/jpeg'];
@@ -130,10 +136,12 @@ const FileInput = ({
           {...register}
         />
 
-        <div className={`${s.border} ${errorMessage ? s.error : ''} ${image ? s.hasImage : ''}`}>
-          {image && (
-            <div className={s.image}>
-              <img src={image} alt="uploaded image" />
+        <div className={`${s.border} ${errorMessage ? s.error : ''} ${images.length > 0 ? s.hasImages : ''}`}>
+          {images.length > 0 && (
+            <div className={s.images}>
+              {images.map((image, index) => (
+                <img key={index} src={image} alt="uploaded image" className={images.length > 1 ? s.multiple : ''} />
+              ))}
             </div>
           )}
 
@@ -143,7 +151,7 @@ const FileInput = ({
             </Caption>
           )}
 
-          {!fileName && <RiAddCircleLine />}
+          {!fileName && images.length <= 0 && <RiAddCircleLine />}
         </div>
       </div>
 
