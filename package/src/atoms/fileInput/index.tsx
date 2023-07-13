@@ -1,7 +1,7 @@
 import React, { DetailedHTMLProps, DragEvent, InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 import { UseFormRegisterReturn, UseFormSetValue, UseFormWatch } from 'react-hook-form';
-import { RiAddCircleLine, RiQuestionLine } from 'react-icons/ri';
-import { Caption, Label } from '../../tokens/typography';
+import { RiAddCircleLine, RiFileList2Line, RiImageLine, RiQuestionLine } from 'react-icons/ri';
+import { Caption, H2, Label } from '../../tokens/typography';
 import ErrorMessage from '../errorMessage';
 import s from './fileInput.module.scss';
 
@@ -44,7 +44,8 @@ const FileInput = ({
 }: FileInputProps) => {
   const [dragActive, setDragActive] = useState(false);
   const [fileName, setFileName] = useState('');
-  const [images, setImages] = useState([]);
+  const [image, setImage] = useState('');
+  const [numberOfFiles, setNumberOfFiles] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const matchType = (type: string) => {
@@ -84,12 +85,14 @@ const FileInput = ({
 
       if (fileList && fileList.length > 0) {
         setFileName(fileList.length === 1 ? fileList[0].name : '');
+        setNumberOfFiles(fileList.length);
 
-        const images = [];
-        for (let i = 0; i < fileList.length; i++)
-          if (fileList[i].type.startsWith('image')) images.push(URL.createObjectURL(fileList[i]));
-
-        setImages(images);
+        if (fileList.length === 1 && fileList[0].type.startsWith('image')) setImage(URL.createObjectURL(fileList[0]));
+        else setImage('');
+      } else {
+        setFileName('');
+        setNumberOfFiles(0);
+        setImage('');
       }
     });
 
@@ -136,22 +139,30 @@ const FileInput = ({
           {...register}
         />
 
-        <div className={`${s.border} ${errorMessage ? s.error : ''} ${images.length > 0 ? s.hasImages : ''}`}>
-          {images.length > 0 && (
-            <div className={s.images}>
-              {images.map((image, index) => (
-                <img key={index} src={image} alt="uploaded image" className={images.length > 1 ? s.multiple : ''} />
-              ))}
+        <div className={`${s.border} ${errorMessage ? s.error : ''} ${image.length > 0 ? s.hasImage : ''}`}>
+          {image && (
+            <div className={s.image}>
+              <img src={image} alt="uploaded image" />
             </div>
           )}
 
           {fileName && (
-            <Caption className={s.small} darkMode={darkMode}>
-              {fileName}
-            </Caption>
+            <div className={s.fileName}>
+              {!image && <RiFileList2Line />}
+              <Caption className={s.small} darkMode={darkMode}>
+                {fileName}
+              </Caption>
+            </div>
           )}
 
-          {!fileName && images.length <= 0 && <RiAddCircleLine />}
+          {numberOfFiles > 1 && (
+            <div className={s.numberOfFiles}>
+              <H2 darkMode={darkMode}>{numberOfFiles}</H2>
+              <RiImageLine />
+            </div>
+          )}
+
+          {numberOfFiles <= 0 && <RiAddCircleLine />}
         </div>
       </div>
 
