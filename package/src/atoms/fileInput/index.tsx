@@ -23,7 +23,6 @@ export interface FileInputProps extends DetailedHTMLProps<InputHTMLAttributes<HT
   register?: UseFormRegisterReturn;
   watch?: UseFormWatch<any>;
   reserveErrorSpace?: boolean;
-  multiple?: boolean;
 }
 
 const FileInput = ({
@@ -39,7 +38,6 @@ const FileInput = ({
   watch,
   setValue,
   reserveErrorSpace,
-  multiple,
   ...rest
 }: FileInputProps) => {
   const [dragActive, setDragActive] = useState(false);
@@ -123,7 +121,6 @@ const FileInput = ({
           value={undefined}
           id={id}
           name={id}
-          multiple={multiple}
           accept={fileTypes
             .map((type) => {
               if (type === FileType.IMAGE) return ['image/png', 'image/jpeg'];
