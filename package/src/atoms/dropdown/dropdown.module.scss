@@ -106,6 +106,7 @@
   .errorIcon,
   .dropdownIcon {
     position: absolute;
+    pointer-events: none;
     top: 0;
     right: 0;
     bottom: 0;

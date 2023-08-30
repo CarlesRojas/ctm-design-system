@@ -1,20 +1,4 @@
-import {
-  Body,
-  Button,
-  ButtonType,
-  Checkbox,
-  CheckButton,
-  Dialog,
-  Dropdown,
-  ErrorMessage,
-  FileInput,
-  H2,
-  Input,
-  Link,
-  Loading,
-  RadioButton,
-  SuccessMessage
-} from 'ctm-design-system';
+import { Button, Dropdown, DropdownOption, DropdownWithSearch, Input } from 'ctm-design-system';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import s from './app.module.scss';
@@ -24,12 +8,37 @@ interface Inputs {
   checkbox: string;
   checkButton: string;
   dropdown: string;
+  dropdownWithSearch: string;
   radioButton: string;
   fileInput: FileList;
 }
 
+const randomOptions: DropdownOption[] = [
+  { label: 'Barcelona', value: 'barcelona' },
+  { label: 'Madrid', value: 'madrid' },
+  { label: 'Sevilla', value: 'sevilla' },
+  { label: 'Valencia', value: 'valencia' },
+  { label: 'Paris', value: 'paris' },
+  { label: 'Lyon', value: 'lyon' },
+  { label: 'Marseille', value: 'marseille' },
+  { label: 'Toulouse', value: 'toulouse' },
+  { label: 'Nantes', value: 'nantes' },
+  { label: 'Bordeaux', value: 'bordeaux' },
+  { label: 'Lille', value: 'lille' },
+  { label: 'Strasbourg', value: 'strasbourg' },
+  { label: 'Montpellier', value: 'montpellier' },
+  { label: 'Nice', value: 'nice' },
+  { label: 'Nancy', value: 'nancy' },
+  { label: 'Rennes', value: 'rennes' },
+  { label: 'Grenoble', value: 'grenoble' },
+  { label: 'Dijon', value: 'dijon' },
+  { label: 'Angers', value: 'angers' },
+  { label: 'Nimes', value: 'nimes' },
+  { label: 'Le Havre', value: 'le havre' }
+];
+
 const Home = () => {
-  const darkMode = false;
+  const darkMode = true;
   const whiteBackground = false;
   const showIcon = true;
 
@@ -39,12 +48,14 @@ const Home = () => {
     setError,
     watch,
     setValue,
+    control,
     formState: { errors }
   } = useForm<Inputs>();
 
   const onSubmit = (data: Inputs) => {
     setError('input', { type: 'manual', message: 'Error message' });
     setError('dropdown', { type: 'manual', message: 'Error message' });
+    setError('dropdownWithSearch', { type: 'manual', message: 'Error message' });
     setError('fileInput', { type: 'manual', message: 'Error message' });
     setError('checkbox', { type: 'manual', message: 'Error message' });
 
@@ -66,7 +77,7 @@ const Home = () => {
           overWhite={whiteBackground}
           reserveErrorSpace
         />
-
+        {/* 
         <Checkbox
           id={'checkbox'}
           register={register('checkbox')}
@@ -145,7 +156,7 @@ const Home = () => {
             reserveErrorSpace
             multiple
           />
-        </div>
+        </div> */}
 
         <Dropdown
           id={'dropdown'}
@@ -161,6 +172,18 @@ const Home = () => {
           reserveErrorSpace
         />
 
+        <DropdownWithSearch
+          id={'dropdownWithSearch'}
+          label="Dropdown with search test"
+          dropdownOptions={randomOptions}
+          control={control}
+          errorMessage={getFormError('dropdownWithSearch')}
+          darkMode={darkMode}
+          overWhite={whiteBackground}
+          reserveErrorSpace
+        />
+
+        {/* 
         <Dialog
           darkMode={darkMode}
           id={'dialog'}
@@ -169,20 +192,20 @@ const Home = () => {
           onClose={() => setDilogOpen(false)}
         >
           <H2 darkMode={darkMode}>Content of dialog</H2>
-        </Dialog>
+        </Dialog> */}
 
         <div className={s.group}>
           <Button id={'testButton'} label="Submit" />
-
+          {/* 
           <Button
             id={'testButton'}
             type="button"
             label="Open dialog"
             buttonType={ButtonType.POSITIVE}
             onClick={() => setDilogOpen(true)}
-          />
+          /> */}
         </div>
-
+        {/* 
         <ErrorMessage darkMode={darkMode} id={'errorMessage'} message="Error message" />
 
         <SuccessMessage darkMode={darkMode} id={'successMessage'} message="Success message" />
@@ -191,7 +214,7 @@ const Home = () => {
           <Body darkMode={darkMode}>Link</Body>
         </Link>
 
-        <Loading />
+        <Loading /> */}
       </form>
     </div>
   );

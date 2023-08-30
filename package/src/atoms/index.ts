@@ -3,6 +3,7 @@ export { default as CheckButton, CheckButtonProps } from './checkButton';
 export { default as Checkbox, CheckboxProps } from './checkbox';
 export { default as Dialog, DialogProps } from './dialog';
 export { DROPDOWN_SELECT_DEFAULT_VALUE, default as Dropdown, DropdownOption, DropdownProps } from './dropdown';
+export { default as DropdownWithSearch, DropdownWithSearchProps } from './dropdownWithSearch';
 export { default as ErrorMessage, ErrorMessageProps } from './errorMessage';
 export { default as FileInput, FileInputProps, FileType } from './fileInput';
 export { default as Input, InputProps } from './input';

@@ -1,0 +1,149 @@
+@import '../../tokens/tokens.scss';
+@import '../../tokens/global.scss';
+
+.dropdownWithSearch {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  label {
+    margin-bottom: $spacing-xxs;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .container {
+    position: relative;
+  }
+
+  .select {
+    [class$='-control'] {
+      all: unset !important;
+
+      [class$='-ValueContainer'] {
+        width: 100% !important;
+        font-family: $fontFamily, sans-serif !important;
+        line-height: 150% !important;
+        font-weight: 500 !important;
+        font-size: $spacing-m !important;
+        white-space: pre-line !important;
+        padding: $spacing-s $spacing-xxl $spacing-s $spacing-m !important;
+        border-radius: $radius-circle !important;
+        background-color: $color-white !important;
+        border: 1px solid $color-grey-200 !important;
+        outline: none !important;
+        appearance: none !important;
+        background-repeat: no-repeat !important;
+        background-position: right $spacing-m center !important;
+        background-size: $size-l !important;
+
+        &:hover {
+          border: 1px solid $color-primary-600 !important;
+        }
+
+        [class$='-singleValue'] {
+          margin: 0 !important;
+          padding: 0 !important;
+          color: black !important;
+        }
+
+        [class$='-Input'] {
+          margin: 0 !important;
+          padding: 0 !important;
+          color: black !important;
+        }
+      }
+
+      [class$='-IndicatorsContainer'] {
+        display: none !important;
+      }
+    }
+  }
+
+  &.darkMode {
+    label {
+      color: $color-grey-200;
+    }
+
+    .select {
+      [class$='-ValueContainer'] {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        border: 1px solid transparent !important;
+        color: $color-white !important;
+
+        [class$='-singleValue'] {
+          color: $color-white !important;
+        }
+
+        [class$='-Input'] {
+          color: $color-white !important;
+        }
+      }
+    }
+
+    .dropdownIcon {
+      color: $color-white;
+    }
+
+    .errorIcon {
+      color: $color-destructive-300;
+    }
+  }
+
+  &.overWhite {
+    .select {
+      [class$='-ValueContainer'] {
+        background-color: $color-grey-100 !important;
+        border: 1px solid $color-grey-300 !important;
+      }
+    }
+  }
+
+  .select {
+    &.focused {
+      [class$='-ValueContainer'] {
+        box-shadow: $shadow-input !important;
+        border: 1px solid $color-primary-600 !important;
+      }
+    }
+
+    &.success {
+      [class$='-ValueContainer'] {
+        border: 1px solid $color-semantic-success !important;
+      }
+    }
+
+    &.error {
+      [class$='-ValueContainer'] {
+        border: 1px solid $color-semantic-error !important;
+      }
+    }
+  }
+
+  .errorIcon,
+  .dropdownIcon {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 100%;
+    width: $spacing-xxl;
+    padding: $spacing-s;
+    color: $color-black-800;
+  }
+
+  .errorIcon {
+    right: $spacing-xl;
+    color: $color-semantic-error;
+  }
+}
