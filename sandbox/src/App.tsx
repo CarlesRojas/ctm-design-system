@@ -1,4 +1,22 @@
-import { Button, Dropdown, DropdownOption, DropdownWithSearch, Input } from 'ctm-design-system';
+import {
+  Body,
+  Button,
+  ButtonType,
+  CheckButton,
+  Checkbox,
+  Dialog,
+  Dropdown,
+  DropdownOption,
+  DropdownWithSearch,
+  ErrorMessage,
+  FileInput,
+  H2,
+  Input,
+  Link,
+  Loading,
+  RadioButton,
+  SuccessMessage
+} from 'ctm-design-system';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import s from './app.module.scss';
@@ -38,14 +56,13 @@ const randomOptions: DropdownOption[] = [
 ];
 
 const Home = () => {
-  const darkMode = true;
+  const darkMode = false;
   const whiteBackground = false;
   const showIcon = true;
 
   const {
     register,
     handleSubmit,
-    setError,
     watch,
     setValue,
     control,
@@ -53,15 +70,10 @@ const Home = () => {
   } = useForm<Inputs>();
 
   const onSubmit = (data: Inputs) => {
-    setError('input', { type: 'manual', message: 'Error message' });
-    setError('dropdown', { type: 'manual', message: 'Error message' });
-    setError('dropdownWithSearch', { type: 'manual', message: 'Error message' });
-    setError('fileInput', { type: 'manual', message: 'Error message' });
-    setError('checkbox', { type: 'manual', message: 'Error message' });
-
     console.log(data);
   };
 
+  console.log(errors);
   const [dilogOpen, setDilogOpen] = useState(false);
   const getFormError = (name: keyof Inputs) => errors[name] && errors[name]?.message;
 
@@ -71,16 +83,16 @@ const Home = () => {
         <Input
           id={'input'}
           label={'Input test'}
-          register={register('input')}
+          register={register('input', { required: 'This field is required' })}
           errorMessage={getFormError('input')}
           darkMode={darkMode}
           overWhite={whiteBackground}
           reserveErrorSpace
         />
-        {/* 
+
         <Checkbox
           id={'checkbox'}
-          register={register('checkbox')}
+          register={register('checkbox', { required: 'This field is required' })}
           darkMode={darkMode}
           errorMessage={getFormError('checkbox')}
           reserveErrorSpace
@@ -90,7 +102,7 @@ const Home = () => {
 
         <div className={s.group}>
           <CheckButton
-            register={register('checkButton')}
+            register={register('checkButton', { required: 'This field is required' })}
             value={'cb1'}
             label={'checkbutton information'}
             darkMode={darkMode}
@@ -98,7 +110,7 @@ const Home = () => {
             showIcon={showIcon}
           />
           <CheckButton
-            register={register('checkButton')}
+            register={register('checkButton', { required: 'This field is required' })}
             value={'cb2'}
             label={'checkbutton information'}
             darkMode={darkMode}
@@ -106,19 +118,22 @@ const Home = () => {
             showIcon={showIcon}
           />
           <CheckButton
-            register={register('checkButton')}
+            register={register('checkButton', { required: 'This field is required' })}
             value={'cb3'}
             label={'checkbutton information'}
             darkMode={darkMode}
             overWhite={whiteBackground}
             showIcon={showIcon}
           />
+          {getFormError('checkButton') && (
+            <ErrorMessage id={'checkButtonError'} message={getFormError('checkButton') ?? ''} />
+          )}
         </div>
 
         <div className={s.group}>
           <RadioButton
             label="RadioButton 1"
-            register={register('radioButton')}
+            register={register('radioButton', { required: 'This field is required' })}
             value={'rb1'}
             darkMode={darkMode}
             overWhite={whiteBackground}
@@ -126,7 +141,7 @@ const Home = () => {
           />
           <RadioButton
             label="RadioButton 2"
-            register={register('radioButton')}
+            register={register('radioButton', { required: 'This field is required' })}
             value={'rb2'}
             darkMode={darkMode}
             overWhite={whiteBackground}
@@ -134,12 +149,15 @@ const Home = () => {
           />
           <RadioButton
             label="RadioButton 3"
-            register={register('radioButton')}
+            register={register('radioButton', { required: 'This field is required' })}
             value={'rb3'}
             darkMode={darkMode}
             overWhite={whiteBackground}
             showIcon={showIcon}
           />
+          {getFormError('radioButton') && (
+            <ErrorMessage id={'checkButtonError'} message={getFormError('radioButton') ?? ''} />
+          )}
         </div>
 
         <div className={s.fileInput}>
@@ -147,7 +165,7 @@ const Home = () => {
             id={'fileInput'}
             label="File Input Test"
             overWhite={whiteBackground}
-            register={register('fileInput')}
+            register={register('fileInput', { required: 'This field is required' })}
             watch={watch}
             setValue={setValue}
             errorMessage={getFormError('fileInput')}
@@ -156,16 +174,13 @@ const Home = () => {
             reserveErrorSpace
             multiple
           />
-        </div> */}
+        </div>
 
         <Dropdown
           id={'dropdown'}
           label="Dropdown test"
-          dropdownOptions={[
-            { label: 'Option 1', value: '1' },
-            { label: 'Option 2', value: '2' }
-          ]}
-          register={register('dropdown')}
+          dropdownOptions={randomOptions}
+          register={register('dropdown', { required: 'This field is required' })}
           errorMessage={getFormError('dropdown')}
           darkMode={darkMode}
           overWhite={whiteBackground}
@@ -177,13 +192,13 @@ const Home = () => {
           label="Dropdown with search test"
           dropdownOptions={randomOptions}
           control={control}
+          rules={{ required: 'This field is required' }}
           errorMessage={getFormError('dropdownWithSearch')}
           darkMode={darkMode}
           overWhite={whiteBackground}
           reserveErrorSpace
         />
 
-        {/* 
         <Dialog
           darkMode={darkMode}
           id={'dialog'}
@@ -192,20 +207,20 @@ const Home = () => {
           onClose={() => setDilogOpen(false)}
         >
           <H2 darkMode={darkMode}>Content of dialog</H2>
-        </Dialog> */}
+        </Dialog>
 
         <div className={s.group}>
           <Button id={'testButton'} label="Submit" />
-          {/* 
+
           <Button
             id={'testButton'}
             type="button"
             label="Open dialog"
             buttonType={ButtonType.POSITIVE}
             onClick={() => setDilogOpen(true)}
-          /> */}
+          />
         </div>
-        {/* 
+
         <ErrorMessage darkMode={darkMode} id={'errorMessage'} message="Error message" />
 
         <SuccessMessage darkMode={darkMode} id={'successMessage'} message="Success message" />
@@ -214,7 +229,7 @@ const Home = () => {
           <Body darkMode={darkMode}>Link</Body>
         </Link>
 
-        <Loading /> */}
+        <Loading />
       </form>
     </div>
   );

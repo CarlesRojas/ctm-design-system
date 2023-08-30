@@ -129,6 +129,36 @@
     }
   }
 
+  .ctmDropdownMenu {
+    padding: $spacing-m 0 !important;
+    border-radius: $spacing-m !important;
+    margin: $spacing-m 0 !important;
+    background-color: $color-white !important;
+
+    [class$='-MenuList'] {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+
+      div {
+        font-family: $fontFamily, sans-serif !important;
+        line-height: 150% !important;
+        font-weight: 500 !important;
+        font-size: $spacing-m !important;
+        white-space: pre-line !important;
+        padding: $spacing-s !important;
+        color: black !important;
+
+        &.focused {
+          background-color: $color-grey-100 !important;
+        }
+
+        &.selected {
+          background-color: $color-primary-400 !important;
+        }
+      }
+    }
+  }
+
   .errorIcon,
   .dropdownIcon {
     pointer-events: none;

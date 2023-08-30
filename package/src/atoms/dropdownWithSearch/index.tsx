@@ -1,6 +1,6 @@
 import { DropdownOption } from 'atoms/dropdown';
 import React, { DetailedHTMLProps, SelectHTMLAttributes, useState } from 'react';
-import { Control, Controller } from 'react-hook-form';
+import { Control, Controller, RegisterOptions } from 'react-hook-form';
 import { RiArrowDownSLine, RiErrorWarningFill } from 'react-icons/ri';
 import Select from 'react-select';
 import { Label } from '../../tokens/typography';
@@ -16,6 +16,7 @@ export interface DropdownWithSearchProps
   errorMessage?: string;
   success?: boolean;
   control?: Control<any, any>;
+  rules?: RegisterOptions;
   isDisabled?: boolean;
   darkMode?: boolean;
   overWhite?: boolean;
@@ -30,6 +31,7 @@ const DropdownWithSearch = ({
   errorMessage,
   success,
   control,
+  rules,
   isDisabled,
   darkMode,
   overWhite,
@@ -54,6 +56,7 @@ const DropdownWithSearch = ({
           control={control}
           defaultValue={defaultValue}
           name={id}
+          rules={rules}
           render={({ field: { onChange, value } }) => (
             <Select
               name={id}
@@ -68,6 +71,10 @@ const DropdownWithSearch = ({
               className={`${s.select} ${focused ? s.focused : ''}  ${errorMessage ? s.error : ''} ${
                 success ? s.success : ''
               }`}
+              classNames={{
+                menu: () => s.ctmDropdownMenu,
+                option: ({ isFocused, isSelected }) => `${isFocused ? s.focused : ''} ${isSelected ? s.selected : ''}`
+              }}
             />
           )}
         />
