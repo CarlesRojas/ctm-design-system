@@ -34,9 +34,10 @@ interface Inputs {
 const randomOptions: DropdownOption[] = [
   { label: 'Barcelona', value: 'barcelona' },
   { label: 'Madrid', value: 'madrid' },
+  { label: '', value: '', disabled: true },
   { label: 'Sevilla', value: 'sevilla' },
   { label: 'Valencia', value: 'valencia' },
-  { label: 'Paris', value: 'paris' },
+  { label: 'Paris', value: 'paris', disabled: true },
   { label: 'Lyon', value: 'lyon' },
   { label: 'Marseille', value: 'marseille' },
   { label: 'Toulouse', value: 'toulouse' },

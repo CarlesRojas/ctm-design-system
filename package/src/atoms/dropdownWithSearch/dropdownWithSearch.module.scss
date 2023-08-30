@@ -160,6 +160,11 @@
         &.selected {
           background-color: $color-primary-400 !important;
         }
+
+        &.optionDisabled {
+          opacity: 0.4 !important;
+          pointer-events: none !important;
+        }
       }
     }
   }

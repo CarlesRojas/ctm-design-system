@@ -71,9 +71,11 @@ const DropdownWithSearch = ({
               className={`${s.select} ${focused ? s.focused : ''}  ${errorMessage ? s.error : ''} ${
                 success ? s.success : ''
               }`}
+              isOptionDisabled={(option) => option.disabled ?? false}
               classNames={{
                 menu: () => s.ctmDropdownMenu,
-                option: ({ isFocused, isSelected }) => `${isFocused ? s.focused : ''} ${isSelected ? s.selected : ''}`
+                option: ({ isFocused, isSelected, isDisabled }) =>
+                  `${isFocused ? s.focused : ''} ${isSelected ? s.selected : ''} ${isDisabled ? s.optionDisabled : ''}`
               }}
             />
           )}
