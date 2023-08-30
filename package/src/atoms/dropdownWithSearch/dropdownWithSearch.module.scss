@@ -27,7 +27,12 @@
 
   .select {
     [class$='-control'] {
-      all: unset !important;
+      background-color: transparent !important;
+      border: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      box-shadow: none !important;
+      outline: none !important;
 
       [class$='-ValueContainer'] {
         width: 100% !important;
@@ -154,6 +159,44 @@
 
         &.selected {
           background-color: $color-primary-400 !important;
+        }
+      }
+    }
+  }
+
+  &.darkMode {
+    .ctmDropdownMenu {
+      background-color: #1a1a1a !important;
+      border: 1px solid transparent !important;
+      color: $color-white !important;
+
+      [class$='-MenuList'] {
+        div {
+          color: $color-white !important;
+
+          &.focused {
+            background-color: rgba(255, 255, 255, 0.2) !important;
+          }
+
+          &.selected {
+            background-color: $color-primary-400 !important;
+            color: black !important;
+          }
+        }
+      }
+    }
+  }
+
+  &.overWhite {
+    .ctmDropdownMenu {
+      background-color: $color-grey-100 !important;
+      border: 1px solid $color-grey-300 !important;
+
+      [class$='-MenuList'] {
+        div {
+          &.focused {
+            background-color: $color-grey-200 !important;
+          }
         }
       }
     }
