@@ -21,6 +21,7 @@ export interface DropdownWithSearchProps
   darkMode?: boolean;
   overWhite?: boolean;
   reserveErrorSpace?: boolean;
+  noOptionsMessage?: string;
 }
 
 const DropdownWithSearch = ({
@@ -35,7 +36,8 @@ const DropdownWithSearch = ({
   isDisabled,
   darkMode,
   overWhite,
-  reserveErrorSpace
+  reserveErrorSpace,
+  noOptionsMessage
 }: DropdownWithSearchProps) => {
   const [focused, setFocused] = useState(false);
 
@@ -77,6 +79,7 @@ const DropdownWithSearch = ({
                 option: ({ isFocused, isSelected, isDisabled }) =>
                   `${isFocused ? s.focused : ''} ${isSelected ? s.selected : ''} ${isDisabled ? s.optionDisabled : ''}`
               }}
+              noOptionsMessage={() => noOptionsMessage ?? ''}
             />
           )}
         />

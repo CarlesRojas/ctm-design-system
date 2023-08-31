@@ -198,6 +198,7 @@ const Home = () => {
           darkMode={darkMode}
           overWhite={whiteBackground}
           reserveErrorSpace
+          noOptionsMessage="Nada que mostrar"
         />
 
         <Dialog
