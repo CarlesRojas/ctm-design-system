@@ -15,6 +15,8 @@ export interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLIn
   darkMode?: boolean;
   overWhite?: boolean;
   reserveErrorSpace?: boolean;
+  className?: string;
+  innerRef?: React.Ref<HTMLInputElement>;
 }
 
 const Input = ({
@@ -27,6 +29,8 @@ const Input = ({
   darkMode,
   overWhite,
   reserveErrorSpace,
+  innerRef,
+  className,
   ...rest
 }: InputProps) => {
   return (
@@ -45,9 +49,10 @@ const Input = ({
         <input
           id={id}
           key={id}
-          className={`${errorMessage ? s.error : ''} ${success ? s.success : ''}`}
+          className={`${className} ${errorMessage ? s.error : ''} ${success ? s.success : ''}`}
           data-testid={`input_${id}`}
           disabled={isDisabled}
+          ref={innerRef}
           {...rest}
           {...register}
         />

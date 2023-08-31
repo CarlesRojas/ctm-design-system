@@ -7,7 +7,6 @@ import {
   Dialog,
   Dropdown,
   DropdownOption,
-  DropdownWithSearch,
   ErrorMessage,
   FileInput,
   H2,
@@ -15,6 +14,7 @@ import {
   Link,
   Loading,
   RadioButton,
+  SearchableDropdown,
   SuccessMessage
 } from 'ctm-design-system';
 import { useState } from 'react';
@@ -26,7 +26,7 @@ interface Inputs {
   checkbox: string;
   checkButton: string;
   dropdown: string;
-  dropdownWithSearch: string;
+  searchableDropdown: string;
   radioButton: string;
   fileInput: FileList;
 }
@@ -34,10 +34,9 @@ interface Inputs {
 const randomOptions: DropdownOption[] = [
   { label: 'Barcelona', value: 'barcelona' },
   { label: 'Madrid', value: 'madrid' },
-  { label: '', value: '', disabled: true },
   { label: 'Sevilla', value: 'sevilla' },
   { label: 'Valencia', value: 'valencia' },
-  { label: 'Paris', value: 'paris', disabled: true },
+  { label: 'Paris', value: 'paris' },
   { label: 'Lyon', value: 'lyon' },
   { label: 'Marseille', value: 'marseille' },
   { label: 'Toulouse', value: 'toulouse' },
@@ -74,7 +73,6 @@ const Home = () => {
     console.log(data);
   };
 
-  console.log(errors);
   const [dilogOpen, setDilogOpen] = useState(false);
   const getFormError = (name: keyof Inputs) => errors[name] && errors[name]?.message;
 
@@ -188,17 +186,19 @@ const Home = () => {
           reserveErrorSpace
         />
 
-        <DropdownWithSearch
-          id={'dropdownWithSearch'}
+        <SearchableDropdown
+          id={'searchableDropdown'}
           label="Dropdown with search test"
           dropdownOptions={randomOptions}
           control={control}
           rules={{ required: 'This field is required' }}
-          errorMessage={getFormError('dropdownWithSearch')}
+          errorMessage={getFormError('searchableDropdown')}
           darkMode={darkMode}
           overWhite={whiteBackground}
           reserveErrorSpace
           noOptionsMessage="Nada que mostrar"
+          // success
+          defaultOption={{ label: 'Nimes', value: 'nimes' }}
         />
 
         <Dialog
