@@ -56,8 +56,11 @@ const SearchableDropdown = ({
   const restartInput = useRef('');
 
   const filteredOptions = useMemo(
-    () => dropdownOptions.filter(({ label }) => label.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1),
-    [dropdownOptions, inputValue]
+    () =>
+      open
+        ? dropdownOptions.filter(({ label }) => label.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1)
+        : dropdownOptions,
+    [dropdownOptions, inputValue, open]
   );
 
   const selectOption = (index: number) => {
