@@ -199,7 +199,11 @@ const SearchableDropdown = ({
                 </Body>
               ))}
 
-              {filteredOptions.length === 0 && noOptionsMessage && <Body className={s.option}>{noOptionsMessage}</Body>}
+              {filteredOptions.length === 0 && noOptionsMessage && (
+                <Body darkMode={darkMode} className={s.option}>
+                  {noOptionsMessage}
+                </Body>
+              )}
             </div>
           </div>
         )}
