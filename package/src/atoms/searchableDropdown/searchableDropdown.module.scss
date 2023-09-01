@@ -25,6 +25,10 @@
     position: relative;
     width: 100%;
 
+    .customPointer {
+      cursor: pointer;
+    }
+
     .dropdownInputError {
       border: 1px solid $color-semantic-error;
 

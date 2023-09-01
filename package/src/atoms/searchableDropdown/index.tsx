@@ -97,7 +97,7 @@ const SearchableDropdown = ({
 
       <div className={s.container}>
         <Input
-          className={errorMessage ? s.dropdownInputError : ''}
+          className={`${s.customPointer} ${errorMessage ? s.dropdownInputError : ''}`}
           success={success}
           darkMode={darkMode}
           overWhite={overWhite}
