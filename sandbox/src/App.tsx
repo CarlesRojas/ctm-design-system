@@ -67,7 +67,7 @@ const Home = () => {
     setValue,
     control,
     formState: { errors }
-  } = useForm<Inputs>();
+  } = useForm<Inputs>({ mode: 'onChange' });
 
   const onSubmit = (data: Inputs) => {
     console.log(data);

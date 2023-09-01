@@ -1,5 +1,5 @@
 import React, { DetailedHTMLProps, SelectHTMLAttributes, useEffect, useMemo, useRef, useState } from 'react';
-import { Control, RegisterOptions, useController } from 'react-hook-form';
+import { Control, RegisterOptions, UseControllerProps, useController } from 'react-hook-form';
 import { RiArrowDownSLine, RiErrorWarningFill } from 'react-icons/ri';
 import { Body, Label } from '../../tokens/typography';
 import ErrorMessage from '../errorMessage';
@@ -43,9 +43,12 @@ const SearchableDropdown = ({
   reserveErrorSpace,
   noOptionsMessage
 }: SearchableDropdownProps) => {
+  const useControllerProps: UseControllerProps = { name: id, control, rules };
+  if (defaultOption) useControllerProps.defaultValue = defaultOption.value;
+
   const {
-    field: { ref, onChange, onBlur }
-  } = useController({ name: id, control, rules });
+    field: { ref, value, onChange, onBlur }
+  } = useController(useControllerProps);
 
   const inputRef = useRef<HTMLInputElement | null>();
 
@@ -74,8 +77,9 @@ const SearchableDropdown = ({
   }, [id, hoveredOption]);
 
   useEffect(() => {
+    if (selectedOption?.value === value) return;
     onChange(selectedOption?.value ?? undefined);
-  }, [onChange, selectedOption]);
+  }, [onChange, selectedOption, value]);
 
   useEffect(() => {
     setHoveredOption(0);
