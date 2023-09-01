@@ -108,6 +108,7 @@ const SearchableDropdown = ({
           success={success}
           darkMode={darkMode}
           overWhite={overWhite}
+          isDisabled={isDisabled}
           innerRef={(el) => {
             ref(el);
             inputRef.current = el;
