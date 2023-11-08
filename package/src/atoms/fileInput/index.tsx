@@ -1,3 +1,4 @@
+import ImageResizor from 'image-resizor';
 import React, { DetailedHTMLProps, DragEvent, InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 import { UseFormRegisterReturn, UseFormSetValue, UseFormWatch } from 'react-hook-form';
 import { RiAddCircleLine, RiFileList2Line, RiImageLine, RiQuestionLine } from 'react-icons/ri';
@@ -79,14 +80,27 @@ const FileInput = ({
         }
     };
 
+    // const downloadFileList = (fileList: FileList) => {
+    //     Array.from(fileList).forEach((file) => {
+    //         const url = URL.createObjectURL(file);
+    //         const a = document.createElement('a');
+    //         a.style.display = 'none';
+    //         a.href = url;
+    //         a.download = file.name;
+    //         document.body.appendChild(a);
+    //         a.click();
+    //         document.body.removeChild(a);
+    //         URL.revokeObjectURL(url);
+    //     });
+    // };
+
     const convertHeigToPng = async (fileList: FileList) => {
         if (typeof window !== 'undefined') {
-            const heic2any = (await import('heic2any')).default;
-
             const imagesWithoutHeic = await Promise.all(
                 Array.from(fileList).map(async (file) => {
                     if (file.type === 'image/heic') {
-                        const convertedBlob = (await heic2any({ blob: file })) as Blob;
+                        const convertedImage = await new ImageResizor(file, { outputType: 'image/png' }).init();
+                        const convertedBlob = await convertedImage.toBlob();
                         return new File([convertedBlob], `${file.name.replace('.heic', '')}.png`, {
                             type: 'image/png'
                         });
@@ -96,9 +110,7 @@ const FileInput = ({
 
             const dataTransfer = new DataTransfer();
             imagesWithoutHeic.forEach((file) => dataTransfer.items.add(file));
-            const newFileList = dataTransfer.files;
-
-            setValue(id, newFileList, { shouldValidate: true });
+            setValue(id, dataTransfer.files, { shouldValidate: true });
         }
     };
 
