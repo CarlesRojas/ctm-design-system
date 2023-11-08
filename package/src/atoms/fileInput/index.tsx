@@ -1,4 +1,3 @@
-import heic2any from 'heic2any';
 import React, { DetailedHTMLProps, DragEvent, InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 import { UseFormRegisterReturn, UseFormSetValue, UseFormWatch } from 'react-hook-form';
 import { RiAddCircleLine, RiFileList2Line, RiImageLine, RiQuestionLine } from 'react-icons/ri';
@@ -81,20 +80,26 @@ const FileInput = ({
     };
 
     const convertHeigToPng = async (fileList: FileList) => {
-        const imagesWithoutHeic = await Promise.all(
-            Array.from(fileList).map(async (file) => {
-                if (file.type === 'image/heic') {
-                    const convertedBlob = (await heic2any({ blob: file })) as Blob;
-                    return new File([convertedBlob], `${file.name.replace('.heic', '')}.png`, { type: 'image/png' });
-                } else return file;
-            })
-        );
+        if (typeof window !== 'undefined') {
+            const heic2any = (await import('heic2any')).default;
 
-        const dataTransfer = new DataTransfer();
-        imagesWithoutHeic.forEach((file) => dataTransfer.items.add(file));
-        const newFileList = dataTransfer.files;
+            const imagesWithoutHeic = await Promise.all(
+                Array.from(fileList).map(async (file) => {
+                    if (file.type === 'image/heic') {
+                        const convertedBlob = (await heic2any({ blob: file })) as Blob;
+                        return new File([convertedBlob], `${file.name.replace('.heic', '')}.png`, {
+                            type: 'image/png'
+                        });
+                    } else return file;
+                })
+            );
 
-        setValue(id, newFileList, { shouldValidate: true });
+            const dataTransfer = new DataTransfer();
+            imagesWithoutHeic.forEach((file) => dataTransfer.items.add(file));
+            const newFileList = dataTransfer.files;
+
+            setValue(id, newFileList, { shouldValidate: true });
+        }
     };
 
     const hasHeicFile = (fileList: FileList) => {
