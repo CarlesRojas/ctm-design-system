@@ -1,4 +1,3 @@
-import ImageResizor from 'image-resizor';
 import React, { DetailedHTMLProps, DragEvent, InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 import { UseFormRegisterReturn, UseFormSetValue, UseFormWatch } from 'react-hook-form';
 import { RiAddCircleLine, RiFileList2Line, RiImageLine, RiQuestionLine } from 'react-icons/ri';
@@ -96,6 +95,8 @@ const FileInput = ({
 
     const convertHeigToPng = async (fileList: FileList) => {
         if (typeof window !== 'undefined') {
+            const ImageResizor = (await import('image-resizor')).default;
+
             const imagesWithoutHeic = await Promise.all(
                 Array.from(fileList).map(async (file) => {
                     if (file.type === 'image/heic') {
