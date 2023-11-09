@@ -74,55 +74,13 @@ const FileInput = ({
         event.stopPropagation();
         setDragActive(false);
 
-        if (event.dataTransfer.files && event.dataTransfer.files[0] && matchType(event.dataTransfer.files[0].type)) {
+        if (event.dataTransfer.files && event.dataTransfer.files[0] && matchType(event.dataTransfer.files[0].type))
             setValue(id, event.dataTransfer.files, { shouldValidate: true });
-        }
-    };
-
-    // const downloadFileList = (fileList: FileList) => {
-    //     Array.from(fileList).forEach((file) => {
-    //         const url = URL.createObjectURL(file);
-    //         const a = document.createElement('a');
-    //         a.style.display = 'none';
-    //         a.href = url;
-    //         a.download = file.name;
-    //         document.body.appendChild(a);
-    //         a.click();
-    //         document.body.removeChild(a);
-    //         URL.revokeObjectURL(url);
-    //     });
-    // };
-
-    const convertHeigToPng = async (fileList: FileList) => {
-        if (typeof window !== 'undefined') {
-            const ImageResizor = (await import('image-resizor')).default;
-
-            const imagesWithoutHeic = await Promise.all(
-                Array.from(fileList).map(async (file) => {
-                    if (file.type === 'image/heic') {
-                        const convertedImage = await new ImageResizor(file, { outputType: 'image/png' }).init();
-                        const convertedBlob = await convertedImage.toBlob();
-                        return new File([convertedBlob], `${file.name.replace('.heic', '')}.png`, {
-                            type: 'image/png'
-                        });
-                    } else return file;
-                })
-            );
-
-            const dataTransfer = new DataTransfer();
-            imagesWithoutHeic.forEach((file) => dataTransfer.items.add(file));
-            setValue(id, dataTransfer.files, { shouldValidate: true });
-        }
-    };
-
-    const hasHeicFile = (fileList: FileList) => {
-        return Array.from(fileList).some((file) => file.type === 'image/heic');
     };
 
     useEffect(() => {
-        const subscription = watch(async (value) => {
+        const subscription = watch((value) => {
             const fileList: FileList = value[id];
-            if (hasHeicFile(fileList)) return convertHeigToPng(fileList);
 
             if (fileList && fileList.length > 0) {
                 setFileName(fileList.length === 1 ? fileList[0].name : '');
