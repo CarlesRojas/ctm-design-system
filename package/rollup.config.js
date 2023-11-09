@@ -17,8 +17,7 @@ const config = [
                 sourcemap: true,
                 file: './dist/index.js',
                 format: 'esm',
-                globals: { react: 'React' },
-                inlineDynamicImports: true
+                globals: { react: 'React' }
             }
         ],
 
